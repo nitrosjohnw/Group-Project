@@ -1,3 +1,5 @@
 
 /env
 .exe
+/WebApplication/itembookingsystem/__pycache__
+*.pyc
