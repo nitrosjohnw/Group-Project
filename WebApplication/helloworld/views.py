@@ -1,7 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
-from django.http import HttpResponse
-from .forms import loginForm
+
 # Create your views here.
 def home(request):
 
