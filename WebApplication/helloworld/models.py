@@ -55,16 +55,4 @@ class Equipment(models.Model):
     # Equipment Details
     equipmentName = models.CharField(max_length = 30)
     equipmentType = models.CharField(max_length = 30)
-    equipmentAssests = models.CharField(max_length = 30)
-    equipmentStatus = models.CharField(max_length = 30)
-    equipmentWarranty = models.CharField(max_length = 30)
-    equipmentOnSite = models.BooleanField()
-    equipmentAudit =  models.CharField(max_length = 30)
-
-    #Equipment Keys        
-    equipmentID = models.CharField(max_length = 30, primary_key = True)
     
-    def __str__(self):
-        return self.bookingID  
-
-
