@@ -55,4 +55,5 @@ def loginPage(request):
         'form':form
         }
 
-        return render(request,"login.html",context) 
+    return render(request, "name.html", {"form": form})
+    return render(request,"login.html")
