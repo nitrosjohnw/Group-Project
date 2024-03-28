@@ -42,7 +42,7 @@ def loginPage(request):
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
-            return (request,"login.html", {"status": "Success"})
+                return render(request,"login.html", {"status": "Failed"})
 
     # if a GET (or any other method) we'll create a blank form
     else:
