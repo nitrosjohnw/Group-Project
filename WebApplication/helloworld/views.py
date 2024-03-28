@@ -33,7 +33,7 @@ def loginPage(request):
                 'user':user
                 }
         # Redirect to a success page.
-                return render(request,"login.html",context)
+                return render(request,"home.html",context)
             else:
                 context = {
                 'form':form
