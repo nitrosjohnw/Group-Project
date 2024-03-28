@@ -15,7 +15,7 @@ def bookingPage(request):
 
     return render(request,"booking.html")
 
-def login(request):
+def loginPage(request):
     # if this is a POST request we need to process the form data
     if request.method == "POST":
         username = request.POST["username"]
@@ -27,19 +27,33 @@ def login(request):
         
             user = authenticate(request, username=username, password=password)
             if user is not None:
-                login(request, user)
+                login(request,user)
+                context = {
+                'form':form,
+                'user':user
+                }
         # Redirect to a success page.
-                return render(request,"login.html", {"status": "Success"})
+                return render(request,"login.html",context)
             else:
+                context = {
+                'form':form
+                }
+
         # Return an 'invalid login' error message.
         
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
-                return render(request,"login.html", {"status": "Failed"})
+                return render(request,"login.html",context)
+            
+            
+            
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = loginForm()
+        context = {
+        'form':form
+        }
 
-    return render(request,"login.html")
+        return render(request,"login.html",context) 
