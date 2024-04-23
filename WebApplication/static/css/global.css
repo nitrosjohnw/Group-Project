@@ -1,0 +1,16 @@
+.login-form-label{
+    color: orange; 
+    font-weight: bold; 
+    font-size: 20px;  
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+.submit{
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
