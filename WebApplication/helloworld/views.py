@@ -1,8 +1,21 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from helloworld.forms import loginForm
 # Create your views here.
+
+def UserLoggedIn(request):
+    if request.user.is_authenticated:
+        return True
+    else:
+        return False
+
+
+def GetUserName(request):
+    return request.user.username
+    
+
+
 def home(request):
 
     return render(request,"home.html")
@@ -38,13 +51,7 @@ def loginPage(request):
                 context = {
                 'form':form
                 }
-
-        # Return an 'invalid login' error message.
-        
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-                return render(request,"login.html", {"status": "Failed"})
+                return render(request,"login.html", context)
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -54,3 +61,11 @@ def loginPage(request):
         }
 
         return render(request,"login.html",context) 
+    
+
+def accountPage(request):
+    return render(request,"account.html")
+
+def userLogout(request):
+        logout(request)
+        return render(request,"home.html")
