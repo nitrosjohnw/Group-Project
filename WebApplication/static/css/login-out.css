@@ -1,0 +1,131 @@
+body {
+    font-family: 'InterVogue Medium', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    position: relative;  
+}
+
+.login-container {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(150%, -50%);
+    width: 500px;
+    padding: 50px;
+    border-radius: 30px;
+    background-color: #383737;
+    color: white;
+    text-align: center;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.login-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-option1, .login-option {
+    flex: 1;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.login-option1 {
+    background-color: #555555; /* Lighter grey background for login options */
+}
+
+.login-option > a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.login-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.submit {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #5e5e5e;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit:hover {
+    background-color: #424242;
+}
+.login-option > a,
+.login-option1 > a {
+    color: #ffffff;
+    text-decoration: none; 
+}
+
+
+.login-option > a:visited,
+.login-option1 > a:visited {
+    color: #ffffff; 
+}
+
+
+.login-option > a:hover,
+.login-option1 > a:hover {
+    color: #ffffff; 
+}
+
+.login-option > a:active,
+.login-option1 > a:active {
+    color: #ffffff; 
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        width: 90%; 
+        padding: 30px;
+    }
+}
+
+.logo-container {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+}
+
+.logo-img {
+    width: 1000px; 
+    height: auto; 
+    position: absolute;
+    top: 800%; 
+    left: 30%; 
+    transform: translate(-50%, -50%); 
+}
