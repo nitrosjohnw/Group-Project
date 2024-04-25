@@ -7,6 +7,13 @@ class loginForm(forms.Form):
     class Meta:
         model = User
 
+class signUpForm(forms.Form):
+    username = forms.CharField(label="Username", max_length=50)
+    password = forms.CharField(label="Password", max_length=50)
+    password2 = forms.CharField(label="Password", max_length=50)
+    class Meta:
+        model = User
+
 
 
 class bookingForm(forms.Form):
