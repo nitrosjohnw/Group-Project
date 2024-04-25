@@ -1,14 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
-<<<<<<< HEAD
-from helloworld.forms import loginForm, bookingForm
+from helloworld.forms import loginForm, bookingForm ,signUpForm
 from django.contrib.auth.models import User
 from helloworld.models import Equipment, Booking
-=======
-from helloworld.forms import loginForm
-from helloworld.forms import signUpForm
->>>>>>> da83fdbc4e1be99ae6d88fd4f92709fd07c27ce4
 # Create your views here.
 
 def UserLoggedIn(request):
@@ -16,7 +11,6 @@ def UserLoggedIn(request):
         return True
     else:
         return False
-
 
 def GetUserName(request):
     return request.user.username
