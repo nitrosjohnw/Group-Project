@@ -60,8 +60,7 @@ class Equipment(models.Model):
     equipmentWarranty = models.CharField(max_length = 30)
     equipmentOnSite = models.BooleanField()
     equipmentAudit =  models.CharField(max_length = 30)
-
-    #Equipment Keys        
+        
     equipmentID = models.CharField(max_length = 30, primary_key = True)
     
     def __str__(self):

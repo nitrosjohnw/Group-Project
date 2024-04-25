@@ -1,5 +1,6 @@
 
 /env
+/venv
 .exe
 /WebApplication/itembookingsystem/__pycache__
 *.pyc
