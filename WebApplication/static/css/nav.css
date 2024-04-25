@@ -1,0 +1,54 @@
+body {
+    font-family: 'InterVogue Medium', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #333; /* Darker grey for the navbar */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.nav-left {
+    flex: 1; /* Takes up available space on the left */
+}
+
+.nav-right {
+    /* Right side of the navbar */
+}
+
+.nav-header {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-header li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.nav-header li a {
+    text-decoration: none;
+    color: #ccc; /* Light grey for nav links */
+    font-size: 16px;
+}
+
+.nav-header li a:hover {
+    color: white; /* Change color on hover */
+}
+
+.nav-right .nav-button {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #333; /* Same as navbar background */
+    color: #ccc; /* Light grey for button text */
+    border-radius: 5px;
+}
+
+.nav-right .nav-button:hover {
+    background-color: #555; /* Darken button on hover */
+}
