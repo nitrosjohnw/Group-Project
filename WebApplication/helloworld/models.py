@@ -25,7 +25,7 @@ class Admin_Account(models.Model):
     
     # Admin Account Keys
     accountID = models.CharField(max_length = 30, primary_key = True)
-    adminID = models.CharField(max_length = 30, alternate_key = True )
+    #adminID = models.CharField(max_length = 30, alternate_key = True )
     
     def __str__(self):
         return self.accountID
@@ -46,10 +46,15 @@ class Booking(models.Model):
     # Booking Keys
     bookingID = models.CharField(max_length = 30, primary_key = True)
     accountID = models.ForeignKey('User_Account', on_delete = models.SET_NULL, null = True)
-    adminID = models.ForeignKey('Admin_Account', on_delete = models.SEt_NULL, null = True)
+    #adminID = models.ForeignKey('Admin_Account', on_delete = models.SET_NULL, null = True)
     
     def __str__(self):
         return self.bookingID  
+        
+    @classmethod
+    def create(cls, startDate, endDate, bookingStatus, bookingID, accountID):
+        booking = cls(startDate=startDate, endDate=endDate, bookingStatus = bookingStatus, bookingID =bookingID, accountID = accountID)
+        return booking
     
 class Equipment(models.Model):
     # Equipment Details
@@ -65,3 +70,9 @@ class Equipment(models.Model):
     
     def __str__(self):
         return self.bookingID  
+    
+    @classmethod
+    def create(cls, equipmentName, equipmentType, equipmentAssests, equipmentStatus, equipmentWarranty, equipmentOnSite, equipmentAudit, equipmentID):
+        equipment = cls(equipmentName=equipmentName, equipmentType=equipmentType, equipmentAssests = equipmentAssests, equipmentStatus = equipmentStatus, equipmentWarranty = equipmentWarranty, equipmentOnSite = equipmentOnSite, equipmentAudit = equipmentAudit, equipmentID = equipmentID)
+        return equipment
+    

@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
-from helloworld.forms import loginForm
+from helloworld.forms import loginForm, bookingForm
+from django.contrib.auth.models import User
+from helloworld.models import Equipment, Booking
 # Create your views here.
 
 def UserLoggedIn(request):
@@ -14,6 +16,17 @@ def UserLoggedIn(request):
 def GetUserName(request):
     return request.user.username
     
+def authBooking(bookingDetails):
+    canBook = True
+    if Equipment.objects.filter(id = bookingDetails['itemID']).exists() and User.objects.filter(id = bookingDetails['accountID']).exists():
+        if Booking.objects.filter(startDate = bookingDetails['itemID']).exists:
+
+            for i in Booking.objects.filter(startDate = bookingDetails['itemID']):
+                if ((i.startDate <= bookingDetails['endDate'] <= i.endDate) and (i.startDate <= bookingDetails['startDate'] <= i.endDate)):
+                    canBook = False
+        else:
+            canBook = False
+    return canBook
 
 
 def home(request):
@@ -21,8 +34,13 @@ def home(request):
     return render(request,"home.html")
 
 def account(request):
-
-    return render(request,"account.html")
+    if UserLoggedIn(request) == True:
+        context = {
+        'username':GetUserName(request)
+        }
+        return render(request,"account.html",context)
+    else:
+        return render(request,"login.html")
 
 def bookingPage(request):
 
@@ -73,3 +91,27 @@ def accountPage(request):
 def userLogout(request):
         logout(request)
         return render(request,"home.html")
+
+def bookingPage(request):
+    if request.method == "POST":
+        form = bookingForm(request.POST)
+        if form.is_valid():
+            accountID = request.POST["accountID"]
+            itemID = request.POST["itemID"]
+            startDate = request.POST["startDate"]
+            endDate = request.POST["endDate"]
+            bookingStatus = True
+            context = {
+            'accountID':accountID,
+            'itemID':itemID,
+            'startDate':startDate,
+            'endDate':endDate,
+            'bookingStatus':bookingStatus
+            }
+            context['bookingStatus'] = authBooking(context)
+            if context['bookingStatus'] == True:
+            #Do some stuff to save to DB
+        
+                return render(request,"booking.html",context)
+
+    return render(request,"booking.html")
