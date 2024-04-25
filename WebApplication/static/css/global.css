@@ -106,9 +106,3 @@ input[type="password"] {
     transform: translate(-50%, -50%); /* Center the image perfectly */
 }
 
-.content {
-    flex: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
