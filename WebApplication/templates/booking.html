@@ -4,5 +4,44 @@
     </head>
     <body>
         University Of Westminster
+
+        <div class="booking-form">
+            <form method="post" action="{% url 'booking' %}">
+                <div class="form-group">
+                    <table>
+                        <tr>
+                            <th>Equipment Name</th>
+                            <th>Equipment Type</th>
+                            <th>Equipment Assests</th>
+                            <th>Equipment Status</th>
+                            <th>Equipment Warranty</th>
+                            <th>Equipment OnSite</th>
+                            <th>Equipment Audit</th>
+                        </tr>
+                        {%for item in equipment%}
+                        <tr>
+                            <td>{{item.equipmentName}}</td>
+                            <td>{{item.equipmentType}}</td>
+                            <td>{{item.equipmentAssests}}</td>
+                            <td>{{item.equipmentStatus}}</td>
+                            <td>{{item.equipmentWarranty}}</td>
+                            <td>{{item.equipmentOnSite}}</td>
+                            <td>{{item.equipmentAudit}}</td>
+                            
+                        </tr>
+                        {%endfor%}
+                    </table>
+                    
+
+                    {{ itemID }}
+                </div>
+                <div class="form-group">
+                    <label for="id_password">Password:</label>
+                    {{ form.password }}
+                </div>
+                <input class="submit" type="submit" value="Submit">
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
+        </div>
     </body>
 </html>

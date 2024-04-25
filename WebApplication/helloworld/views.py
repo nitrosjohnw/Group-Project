@@ -19,13 +19,14 @@ def authBooking(bookingDetails):
     canBook = True
     if Equipment.objects.filter(id = bookingDetails['itemID']).exists() and User.objects.filter(id = bookingDetails['accountID']).exists():
         if Booking.objects.filter(startDate = bookingDetails['itemID']).exists:
-
             for i in Booking.objects.filter(startDate = bookingDetails['itemID']):
                 if ((i.startDate <= bookingDetails['endDate'] <= i.endDate) and (i.startDate <= bookingDetails['startDate'] <= i.endDate)):
                     canBook = False
         else:
             canBook = False
-    return canBook
+        return canBook
+    else:
+        return False
 
 
 def home(request):
@@ -124,6 +125,8 @@ def userLogout(request):
         return render(request,"home.html")
 
 def bookingPage(request):
+    equipment = Equipment.objects.all()
+
     if request.method == "POST":
         form = bookingForm(request.POST)
         if form.is_valid():
@@ -133,6 +136,7 @@ def bookingPage(request):
             endDate = request.POST["endDate"]
             bookingStatus = True
             context = {
+            'equipment':equipment,
             'accountID':accountID,
             'itemID':itemID,
             'startDate':startDate,
@@ -144,5 +148,13 @@ def bookingPage(request):
             #Do some stuff to save to DB
         
                 return render(request,"booking.html",context)
-
-    return render(request,"booking.html")
+    form = bookingForm()
+    context = {
+        'equipment':equipment,
+        'accountID':1,
+        'itemID':1,
+        'startDate':1,
+        'endDate':1,
+        'bookingStatus':False
+        }
+    return render(request,"booking.html", context)

@@ -46,6 +46,7 @@ class Booking(models.Model):
     # Booking Keys
     bookingID = models.CharField(max_length = 30, primary_key = True)
     accountID = models.ForeignKey('User_Account', on_delete = models.SET_NULL, null = True)
+    equipmentID = models.ForeignKey('Equipment', on_delete = models.SET_NULL, null = True)
     #adminID = models.ForeignKey('Admin_Account', on_delete = models.SET_NULL, null = True)
     
     def __str__(self):
@@ -65,11 +66,11 @@ class Equipment(models.Model):
     equipmentWarranty = models.CharField(max_length = 30)
     equipmentOnSite = models.BooleanField()
     equipmentAudit =  models.CharField(max_length = 30)
-        
+    
     equipmentID = models.CharField(max_length = 30, primary_key = True)
     
     def __str__(self):
-        return self.bookingID  
+        return self.equipmentID  
     
     @classmethod
     def create(cls, equipmentName, equipmentType, equipmentAssests, equipmentStatus, equipmentWarranty, equipmentOnSite, equipmentAudit, equipmentID):
