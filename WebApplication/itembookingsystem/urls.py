@@ -29,5 +29,6 @@ urlpatterns = [
     path('booking/',views.bookingPage , name='booking'),
     path('account/',views.accountPage , name='account'),
     path('logout/',views.userLogout , name='logout'),
+    path('signup/',views.signUp , name='signup'),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

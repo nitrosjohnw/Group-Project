@@ -28,6 +28,10 @@ def bookingPage(request):
 
     return render(request,"booking.html")
 
+def signUp(request):
+
+    return render(request,"signup.html")
+
 def loginPage(request):
     # if this is a POST request we need to process the form data
     if request.method == "POST":
