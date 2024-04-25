@@ -32,12 +32,12 @@ class Admin_Account(models.Model):
     
 class Booking(models.Model):
     
-    STATUS = {
-        "O" : "Open",
-        "C" : "Closed",
-        "L" : "Late",
-    }
-    
+    STATUS = [
+        ("O", "Open"),
+        ("C", "Closed"),
+        ("L", "Late"),
+    ]
+
     # Booking Details
     startDate = models.CharField(max_length = 10)
     endDate = models.CharField(max_length = 10)
