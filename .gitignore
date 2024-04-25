@@ -5,3 +5,6 @@
 /WebApplication/itembookingsystem/__pycache__
 *.pyc
 WebApplication/itembookingsystem/__pycache__/__init__.cpython-311.pyc
+.sqlite3
+WebApplication/db.sqlite3
+WebApplication/db.sqlite3
