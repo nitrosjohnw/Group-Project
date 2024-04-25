@@ -19,7 +19,7 @@
 </div>
 <div class="nav-right">
     {% if user.is_authenticated %}
-        <a href="{% url 'logout' %}" class="nav-button">Logout</a>
+        <a href="{% url 'login' %}" class="nav-button">Logout</a>
     {% else %}
         <a href="{% url 'login' %}" class="nav-button">Login</a>
     {% endif %}
