@@ -1,10 +1,22 @@
+{% load static %}
 <html>
     <head>
         <title>Item Booking System</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
         
     </head>
     <body>
         {%include 'navbar.html'%}
-        University Of Westminster
+        <div class="logo-container2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/University_of_Westminster_Logo.jpg" alt="University of Westminster Logo" class="logo-img2">
+        </div>
+
+        <div class="background-image">
+            <div class="overlay">
+                <h1 class="overlay-text">Image Booking System</h1>
+            </div>
+            <img src="https://media.licdn.com/dms/image/C561BAQEUYApCoEMyHg/company-background_10000/0/1633088668740/university_of_westminster_cover?e=1714665600&v=beta&t=B_eu42R6Jd7wLjbIW5X3L9SD8MdwleThUAHTE6XBLUU" alt="University of Westminster image" class="background-uni-image">
+        </div>
+
     </body>
 </html>

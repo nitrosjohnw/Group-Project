@@ -7,7 +7,6 @@
         <title>Item Booking System</title>
     </head>
     <body>
-        {%include 'navbar.html'%}
         
         {% block content %}
 
@@ -30,7 +29,7 @@
         <div class="login-container">
             <div class="login-header">
                 <div class="login-option">Log In</div>
-                <div class="login-option">Sign Up</div>
+                <div class="login-option"><a href="{% url 'signup' %}">Sign Up</a></div>
             </div>
             <div class="login-form">
                 <form method="post" action="{% url 'login' %}">

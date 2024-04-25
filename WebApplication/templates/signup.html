@@ -1,0 +1,62 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=InterVogue+Medium&display=swap">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
+    <title>Item Booking System</title>
+</head>
+
+<body>
+
+    {% block content %}
+
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    {% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+    {% endif %}
+    <div class="logo-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/University_of_Westminster_Logo.jpg"
+            alt="University of Westminster Logo" class="logo-img">
+    </div>
+
+    <div class="login-container">
+        <div class="login-header">
+            <div class="login-option"><a href="{% url 'login' %}" class="nav-button">Log In</a></div>
+            <div class="login-option"><a href="{% url 'signup' %}">Sign Up</a></div>
+        </div>
+        <div class="login-form">
+            <form id="login-form" method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_username">Username:</label>
+                    <input type="text" id="id_username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="id_password">Password:</label>
+                    <input type="password" id="id_password" name="password">
+                </div>
+                <div class="form-group">
+                    <label for="id_confirm_password">Confirm Password:</label>
+                    <input type="password" id="id_confirm_password" name="confirm_password">
+                </div>
+                <input class="submit" type="button" id="submit-btn" value="Submit">
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
+        </div>
+    </div>
+
+    {# Assumes you set up the password_reset view in your URLconf #}
+
+    {% endblock %}
+</body>
+
+</html>

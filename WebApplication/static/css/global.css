@@ -36,6 +36,14 @@ body {
     cursor: pointer;
 }
 
+.login-option > a{
+    color: #ffffff;
+    flex: 1;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .login-form {
     text-align: left;
 }
@@ -98,9 +106,3 @@ input[type="password"] {
     transform: translate(-50%, -50%); /* Center the image perfectly */
 }
 
-.content {
-    flex: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}

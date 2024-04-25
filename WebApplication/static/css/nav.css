@@ -52,3 +52,8 @@ body {
 .nav-right .nav-button:hover {
     background-color: #555; /* Darken button on hover */
 }
+.login-option,a {
+    flex: 1;
+    font-weight: bold;
+    cursor: pointer;
+}
