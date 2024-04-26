@@ -21,7 +21,7 @@
                         </tr>
                         {%for item in equipment%}
                         <tr >
-                            <td><input type="radio" name="itemID" value="{{item.id}}"></td>
+                            <td><input type="radio" name="itemID" id="item{{ item.equipmentID }}" value="{{item.equipmentID}}"></td>
                             <td>{{item.equipmentName}}</td>
                             <td>{{item.equipmentType}}</td>
                             <td>{{item.equipmentQuantity}}</td>
