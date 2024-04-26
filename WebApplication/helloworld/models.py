@@ -57,7 +57,7 @@ class Booking(models.Model):
     #adminID = models.ForeignKey('Admin_Account', on_delete = models.SET_NULL, null = True)
     
     def __str__(self):
-        return self.bookingID  
+        return self.bookingStatus  
         
     @classmethod
     def create(cls, startDate, endDate, bookingStatus, account, equipment):
