@@ -7,4 +7,3 @@ from .models import  Booking, Equipment
 
 admin.site.register(Booking)
 admin.site.register(Equipment)
-

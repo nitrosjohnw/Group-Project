@@ -14,8 +14,6 @@ class signUpForm(forms.Form):
     class Meta:
         model = User
 
-    def vaildatePassword(self):
-        return self.password == self.password2
 
 class bookingForm(forms.Form):
     #accountID = forms.CharField(label = "accountID",max_length = 30)

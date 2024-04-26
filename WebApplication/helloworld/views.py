@@ -48,7 +48,7 @@ def bookingPage(request):
     return render(request,"booking.html")
 
 def signUp(request):
-    print(request)
+    print(request.POST)
     # if this is a POST request we need to process the form data
     if request.method == "POST":
         username = request.POST["username"]
@@ -57,24 +57,37 @@ def signUp(request):
         # create a form instance and populate it with data from the request:
         form = signUpForm(request.POST)
         # check whether it's valid:
-        if form.vaildatePassword:
+        if (not(password == password2)):
+            context = {
+            'form':form,
+            'status':'Passwords do not match'
+            }
             return render(request,"signup.html",context)
         if form.is_valid():
-            user = user.create(username = username, password = password)
-            user.save()
-
-            user = authenticate(request, username=username, password=password)
+            try: 
+                user = User.objects.create(username = username) 
+                user.set_password(password)
+                user.save()
+            except:
+                context = {
+                'form':form,
+                'status':'Username already exists'
+                }
+                return render(request,"signup.html", context)
+            
             if user is not None:
                 login(request,user)
                 context = {
                 'form':form,
-                'user':user
+                'user':user,
+                'status':'Sign Up Successful'
                 }
-        # Redirect to a success page.
+                # Redirect to a success page.
                 return render(request,"home.html",context)
             else:
                 context = {
-                'form':form
+                'form':form,
+                'status':'Signup Failed'
                 }
                 return render(request,"signup.html", context)
 
@@ -82,10 +95,10 @@ def signUp(request):
     else:
         form = signUpForm()
         context = {
-        'form':form
+        'form':form,
+        'status':'Invalid Username or Password',
         }
-
-        return render(request,"signup.html",context) 
+        return render(request,"signup.html",context)
     return render(request,"signup.html")
 
 def loginPage(request):
@@ -96,15 +109,22 @@ def loginPage(request):
         # create a form instance and populate it with data from the request:
         form = loginForm(request.POST)
         # check whether it's valid:
+        if request.user.is_authenticated:
+            context = {
+            'form':form,
+            'status':'Already Logged In'
+            }
+            return render(request,"home.html",context)
         if form.is_valid():
-        
+            print("Form is Valid")
             user = authenticate(request, username=username, password=password)
             if user is not None:
+                print("User is not None")
                 login(request,user)
                 context = {
                 'form':form,
                 'user':user,
-                'status':'',
+                'status':'Login Successful',
                 }
         # Redirect to a success page.
                 return render(request,"home.html",context)
@@ -114,7 +134,13 @@ def loginPage(request):
                 'status':'Invalid Username or Password'
                 }
                 return render(request,"login.html", context)
-
+        else:
+            print("Form is Invalid")
+            context = {
+            'form':form,
+            'status':'Invalid Username or Password'
+            }
+            return render(request,"login.html", context)
     # if a GET (or any other method) we'll create a blank form
     else:
         form = loginForm()
@@ -122,7 +148,6 @@ def loginPage(request):
         'form':form,
         'status':'',
         }
-
         return render(request,"login.html",context) 
     
 
@@ -131,6 +156,7 @@ def accountPage(request):
 
 def userLogout(request):
         logout(request)
+        request.user = None
         return render(request,"home.html")
 
 def bookingPage(request):
