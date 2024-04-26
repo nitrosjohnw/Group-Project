@@ -17,11 +17,11 @@ class signUpForm(forms.Form):
 
 
 class bookingForm(forms.Form):
-    accountID = forms.CharField(label = "accountID",max_length = 30)
-    itemID = forms.CharField(label = "ID",max_length = 30)
+    #accountID = forms.CharField(label = "accountID",max_length = 30)
+    itemID = forms.IntegerField(label = "ID")
     startDate = forms.DateField(label = "Start Date")
     endDate = forms.DateField(label = "End Date")
-    bookingStatus = forms.CharField(label = "Status",max_length = 30) # this will just be true, admin will not have to accept these
+    #bookingStatus = forms.CharField(label = "Status",max_length = 30) # this will just be true, admin will not have to accept these
     class Meta:
         model = Booking
-        fields = ['accountID','itemID','startDate','endDate','bookingStatus']
+        fields = ['itemID','startDate','endDate']

@@ -17,10 +17,11 @@ def GetUserName(request):
     
 def authBooking(bookingDetails):
     canBook = True
-    if Equipment.objects.filter(id = bookingDetails['itemID']).exists() and User.objects.filter(id = bookingDetails['accountID']).exists():
+    if Equipment.objects.filter(equipmentID = bookingDetails['itemID']).exists() and User.objects.filter(id = bookingDetails['accountID']).exists():
         if Booking.objects.filter(startDate = bookingDetails['itemID']).exists:
-            for i in Booking.objects.filter(startDate = bookingDetails['itemID']):
-                if ((i.startDate <= bookingDetails['endDate'] <= i.endDate) and (i.startDate <= bookingDetails['startDate'] <= i.endDate)):
+            for i in Booking.objects.filter(equipmentID = bookingDetails['itemID']):
+                # write a if statement to check if the dates are available
+                if bookingDetails['startDate'] >= i.startDate and bookingDetails['startDate'] <= i.endDate:
                     canBook = False
         else:
             canBook = False
@@ -147,10 +148,15 @@ def bookingPage(request):
             'endDate':endDate,
             'bookingStatus':bookingStatus
             }
-            context['bookingStatus'] = authBooking(context)
+            context['bookingStatus'] = True #authBooking(context)
+            print(context['bookingStatus'])
             if context['bookingStatus'] == True:
-            #Do some stuff to save to DB
-        
+                user = User.objects.filter(id = user.id).first()
+                item = Equipment.objects.filter(equipmentID = itemID).first()
+                print(item)
+                booking = Booking.create(startDate, endDate, "O", user,item)
+                booking.save()
+                print("Booking Successful")
                 return render(request,"booking.html",context)
     form = bookingForm()
     context = {

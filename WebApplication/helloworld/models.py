@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.conf import settings
 # Create your models here.
 
 class User_Account(models.Model):
@@ -29,34 +30,7 @@ class Admin_Account(models.Model):
     
     def __str__(self):
         return self.accountID
-    
-class Booking(models.Model):
-    
-    STATUS = [
-        ("O", "Open"),
-        ("C", "Closed"),
-        ("L", "Late"),
-    ]
 
-    # Booking Details
-    startDate = models.CharField(max_length = 10)
-    endDate = models.CharField(max_length = 10)
-    bookingStatus = models.CharField(max_length = 10, choices = STATUS)
-    
-    # Booking Keys
-    bookingID = models.CharField(max_length = 30, primary_key = True)
-    accountID = models.ForeignKey('User_Account', on_delete = models.SET_NULL, null = True)
-    equipmentID = models.ForeignKey('Equipment', on_delete = models.SET_NULL, null = True)
-    #adminID = models.ForeignKey('Admin_Account', on_delete = models.SET_NULL, null = True)
-    
-    def __str__(self):
-        return self.bookingID  
-        
-    @classmethod
-    def create(cls, startDate, endDate, bookingStatus, bookingID, accountID):
-        booking = cls(startDate=startDate, endDate=endDate, bookingStatus = bookingStatus, bookingID =bookingID, accountID = accountID)
-        return booking
-    
 class Equipment(models.Model):
     LOCATIONS = [
         ("XRLBC", "XRL Lab Blue Cabinet"),
@@ -89,3 +63,31 @@ class Equipment(models.Model):
     def create(cls, equipmentName, equipmentType, equipmentQuantity, equipmentLocation, equipmentAudit, equipmentStatus, equipmentID):
         equipment = cls(equipmentName=equipmentName, equipmentType=equipmentType, equipmentQuantity = equipmentQuantity, equipmentLocation = equipmentLocation, equipmentAudit = equipmentAudit, equipmentStatus = equipmentStatus, equipmentID = equipmentID)
         return equipment
+
+class Booking(models.Model):
+    
+    STATUS = [
+        ("O", "Open"),
+        ("C", "Closed"),
+        ("L", "Late"),
+    ]
+
+    # Booking Details
+    startDate = models.CharField(max_length = 10)
+    endDate = models.CharField(max_length = 10)
+    bookingStatus = models.CharField(max_length = 10, choices = STATUS)
+    
+    # Booking Keys
+    bookingID = models.CharField(max_length = 30, primary_key = True)
+    accountID = models.ForeignKey(User, on_delete = models.SET_NULL, null = True)
+    equipmentID = models.ForeignKey(Equipment, on_delete = models.SET_NULL, null = True)
+    #adminID = models.ForeignKey('Admin_Account', on_delete = models.SET_NULL, null = True)
+    
+    def __str__(self):
+        return self.bookingID  
+        
+    @classmethod
+    def create(cls, startDate, endDate, bookingStatus, accountID, equipmentID):
+        booking = cls(startDate=startDate, endDate=endDate, bookingStatus = bookingStatus, accountID = accountID, equipmentID = equipmentID)
+        return booking
+    
