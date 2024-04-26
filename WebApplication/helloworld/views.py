@@ -128,12 +128,16 @@ def bookingPage(request):
     equipment = Equipment.objects.all()
 
     if request.method == "POST":
+        print(request.POST)
         form = bookingForm(request.POST)
         if form.is_valid():
-            accountID = request.POST["accountID"]
+            #accountID = request.POST["accountID"]
+            user = request.user
+            accountID = user.id
             itemID = request.POST["itemID"]
             startDate = request.POST["startDate"]
             endDate = request.POST["endDate"]
+            
             bookingStatus = True
             context = {
             'equipment':equipment,
