@@ -92,13 +92,13 @@ def signUp(request):
                 return render(request,"signup.html", context)
 
     # if a GET (or any other method) we'll create a blank form
-    else:
-        form = signUpForm()
-        context = {
-        'form':form,
-        'status':'Invalid Username or Password',
-        }
-        return render(request,"signup.html",context)
+        else:
+            form = signUpForm()
+            context = {
+            'form':form,
+            'status':'Invalid Username or Password',
+            }
+            return render(request,"signup.html",context)
     return render(request,"signup.html")
 
 def loginPage(request):
