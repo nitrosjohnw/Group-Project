@@ -98,13 +98,15 @@ def loginPage(request):
                 login(request,user)
                 context = {
                 'form':form,
-                'user':user
+                'user':user,
+                'status':'',
                 }
         # Redirect to a success page.
                 return render(request,"home.html",context)
             else:
                 context = {
-                'form':form
+                'form':form,
+                'status':'Invalid Username or Password'
                 }
                 return render(request,"login.html", context)
 
@@ -112,7 +114,8 @@ def loginPage(request):
     else:
         form = loginForm()
         context = {
-        'form':form
+        'form':form,
+        'status':'',
         }
 
         return render(request,"login.html",context) 
