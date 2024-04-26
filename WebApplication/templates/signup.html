@@ -34,7 +34,7 @@
             <div class="login-option1"><a href="{% url 'signup' %}">Sign Up</a></div>
         </div>
         <div class="login-form">
-            <form id="login-form" method="post" action="{% url 'login' %}">
+            <form id="login-form" method="post" action="{% url 'signup' %}">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="id_username">Username:</label>
@@ -46,14 +46,13 @@
                 </div>
                 <div class="form-group">
                     <label for="id_confirm_password">Confirm Password:</label>
-                    <input type="password" id="id_confirm_password" name="confirm_password">
-                </div>
-                <input class="submit" type="button" id="submit-btn" value="Submit">
-                <input type="hidden" name="next" value="{{ next }}">
-            </form>
-        </div>
+                <input type="password" id="id_confirm_password" name="password2">
+            </div>
+            <input class="submit" type="submit" value="Sign Up">
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
     </div>
-
+</div>
     {# Assumes you set up the password_reset view in your URLconf #}
 
     {% endblock %}

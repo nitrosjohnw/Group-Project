@@ -10,11 +10,12 @@ class loginForm(forms.Form):
 class signUpForm(forms.Form):
     username = forms.CharField(label="Username", max_length=50)
     password = forms.CharField(label="Password", max_length=50)
-    password2 = forms.CharField(label="Password", max_length=50)
+    password2 = forms.CharField(label="Password2", max_length=50)
     class Meta:
         model = User
 
-
+    def vaildatePassword(self):
+        return self.password == self.password2
 
 class bookingForm(forms.Form):
     #accountID = forms.CharField(label = "accountID",max_length = 30)
