@@ -4,6 +4,23 @@ body {
     padding: 0;
 }
 
+.statusbar{
+    background-color: rgb(29, 146, 29);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    text-align: center;
+}
+
+
+.statusbar > p {
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
 .navbar {
     background-color: #333; 
     display: flex;
