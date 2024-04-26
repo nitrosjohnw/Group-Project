@@ -1,0 +1,54 @@
+/* Add scrollable table container */
+.scrollable-table-container {
+    max-height: 600px; /* Set the maximum height for scroll */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Style the table inside the scrollable container */
+.scrollable-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.scrollable-table-container th, .scrollable-table-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.scrollable-table-container th {
+    background-color: #444444;
+    color: #fff;
+}
+
+/* Add styling for form inputs and labels (similar to previous example) */
+.form-group input[type="date"], .form-group input[type="text"], .form-group input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.submit {
+    background-color: #383838;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #3f3f3f;
+}

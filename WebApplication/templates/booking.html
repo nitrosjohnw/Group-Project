@@ -1,16 +1,17 @@
 {% load static %}
 <html>
-    <head>
-        <title>Item Booking System</title>
+<head>
+    <title>Item Booking System</title>
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
+</head>
+<body>
+    {% include 'navbar.html' %}
 
-    </head>
-    <body>
-        {%include 'navbar.html'%}
-
-        <div class="booking-form">
-            <form method="post" action="{% url 'booking' %}">
-                {% csrf_token %}
-                <div class="form-group">
+    <div class="booking-form">
+        <form method="post" action="{% url 'booking' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="scrollable-table-container">
                     <table>
                         <tr>
                             <th></th>
@@ -19,26 +20,24 @@
                             <th>Equipment Quantity</th>
                             <th>Equipment Location</th>
                         </tr>
-                        {%for item in equipment%}
-                        <tr >
-                            <td><input type="radio" name="itemID" id="item{{ item.equipmentID }}" value="{{item.equipmentID}}"></td>
-                            <td>{{item.equipmentName}}</td>
-                            <td>{{item.equipmentType}}</td>
-                            <td>{{item.equipmentQuantity}}</td>
-                            <td>{{item.equipmentLocation}}</td>
-                            
-
-                            
+                        {% for item in equipment %}
+                        <tr>
+                            <td><input type="radio" name="itemID" id="item{{ item.equipmentID }}" value="{{ item.equipmentID }}"></td>
+                            <td>{{ item.equipmentName }}</td>
+                            <td>{{ item.equipmentType }}</td>
+                            <td>{{ item.equipmentQuantity }}</td>
+                            <td>{{ item.equipmentLocation }}</td>
                         </tr>
-                        {%endfor%}
+                        {% endfor %}
                     </table>
-                    <label for="bookingStartDate">Booking start date</label>
-                    <input id = "bookingStartDate" name = "startDate" type="date" value="{{startDate}}" />
-                    <label for="bookingEndDate">Booking end date</label>
-                    <input id = "bookingEndDate" name = "endDate" type="date" value="{{endDate}}" />
                 </div>
-                <input class="submit" type="submit" value="Submit">
-            </form>
-        </div>
-    </body>
+                <label for="bookingStartDate">Booking start date</label>
+                <input id="bookingStartDate" name="startDate" type="date" value="{{ startDate }}">
+                <label for="bookingEndDate">Booking end date</label>
+                <input id="bookingEndDate" name="endDate" type="date" value="{{ endDate }}">
+            </div>
+            <input class="submit" type="submit" value="Submit">
+        </form>
+    </div>
+</body>
 </html>
