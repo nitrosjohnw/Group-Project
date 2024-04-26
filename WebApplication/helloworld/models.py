@@ -46,8 +46,8 @@ class Booking(models.Model):
     ]
 
     # Booking Details
-    startDate = models.CharField(max_length = 10)
-    endDate = models.CharField(max_length = 10)
+    startDate = models.DateField()
+    endDate = models.DateField()
     bookingStatus = models.CharField(max_length = 10, choices = STATUS)
     
     # Booking Keys
