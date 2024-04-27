@@ -19,6 +19,25 @@ def getUserBookings(request):
 def GetUserName(request):
     return request.user.username
     
+
+def getEquipmentBetweenDate(startDate, endDate):
+    #look at length of booing table that is returned when filtered then take that away from equipment available
+    bookings = Booking.objects.all()
+    equipment = Equipment.objects.all()
+    for booking in bookings:
+        if booking.startDate >= startDate and booking.endDate <= endDate:
+            for equipment in equipment:
+                if equipment.equipmentID == booking.equipmentID:
+                    equipment.equipmentQuantity = equipment.equipmentQuantity - 1
+    
+    
+    for i in equipment:
+        if i.equipmentQuantity >= 0:
+            equipment = equipment.exclude(equipmentID = i.equipmentID)
+    
+    #return the equipment that is available
+    return equipment
+
 def authBooking(bookingDetails):
     canBook = True
     if Equipment.objects.filter(equipmentID = bookingDetails['itemID']).exists() and User.objects.filter(id = bookingDetails['accountID']).exists():
@@ -163,6 +182,7 @@ def account(request):
         'username':GetUserName(request),
         'bookings':usersBookings
         }
+
         return render(request,"account.html",context)
     else:
         return loginPage(request)

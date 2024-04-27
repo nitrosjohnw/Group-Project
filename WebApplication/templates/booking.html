@@ -12,14 +12,15 @@
             <div class="booking-form">
                 <form method="post" action="{% url 'booking' %}">
                     {% csrf_token %}
+                    <label for="bookingStartDate" class="custom-label">Booking start date</label>
+                    <input id="bookingStartDate" name="startDate" type="date" value="{{ startDate }}">
+                    <label for="bookingEndDate" class="custom-label">Booking end date</label>
+                    <input id="bookingEndDate" name="endDate" type="date" value="{{ endDate }}">
                     <div class="form-group">
                         <div class="scrollable-table-container">
                             {% include 'bookingtable.html' %}
                         </div>
-                        <label for="bookingStartDate" class="custom-label">Booking start date</label>
-                        <input id="bookingStartDate" name="startDate" type="date" value="{{ startDate }}">
-                        <label for="bookingEndDate" class="custom-label">Booking end date</label>
-                        <input id="bookingEndDate" name="endDate" type="date" value="{{ endDate }}">
+
                     </div>
                     <input class="submit" type="submit" value="Submit">
                 </form>
