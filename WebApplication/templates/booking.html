@@ -12,24 +12,7 @@
             {% csrf_token %}
             <div class="form-group">
                 <div class="scrollable-table-container">
-                    <table>
-                        <tr>
-                            <th></th>
-                            <th>Equipment Name</th>
-                            <th>Equipment Type</th>
-                            <th>Equipment Quantity</th>
-                            <th>Equipment Location</th>
-                        </tr>
-                        {% for item in equipment %}
-                        <tr>
-                            <td><input type="radio" name="itemID" id="item{{ item.equipmentID }}" value="{{ item.equipmentID }}"></td>
-                            <td>{{ item.equipmentName }}</td>
-                            <td>{{ item.equipmentType }}</td>
-                            <td>{{ item.equipmentQuantity }}</td>
-                            <td>{{ item.equipmentLocation }}</td>
-                        </tr>
-                        {% endfor %}
-                    </table>
+                    {% include 'bookingtable.html' %}
                 </div>
                 <label for="bookingStartDate">Booking start date</label>
                 <input id="bookingStartDate" name="startDate" type="date" value="{{ startDate }}">
@@ -39,5 +22,9 @@
             <input class="submit" type="submit" value="Submit">
         </form>
     </div>
+    <div class="booking-history">
+        {% include 'userbookingtable.html' %}
+    </div>
+    
 </body>
 </html>

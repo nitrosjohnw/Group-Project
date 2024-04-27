@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <th>Equipment</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Booking Status</th>
+    </tr>
+    {% for booking in bookings %}
+    <tr>
+        <td>{{ booking.equipment.equipmentName }}</td>
+        <td>{{ booking.startDate }}</td>
+        <td>{{ booking.endDate }}</td>
+        <td>{{ booking.bookingStatus }}</td>
+    </tr>
+    {% endfor %}
+</table>

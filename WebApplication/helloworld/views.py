@@ -35,7 +35,7 @@ def home(request):
     return render(request,"home.html")
 
 def account(request):
-    if UserLoggedIn(request) == True:
+    if UserLoggedIn(request):
         context = {
         'username':GetUserName(request)
         }
@@ -159,9 +159,14 @@ def userLogout(request):
         request.user = None
         return render(request,"home.html")
 
+
+
 def bookingPage(request):
     equipment = Equipment.objects.all()
-
+    if not UserLoggedIn(request):
+        return loginPage(request)
+    
+    usersBookings = Booking.objects.filter(account = request.user)
     if request.method == "POST":
         print(request.POST)
         form = bookingForm(request.POST)
@@ -175,12 +180,13 @@ def bookingPage(request):
             
             bookingStatus = True
             context = {
-            'equipment':equipment,
-            'accountID':accountID,
-            'itemID':itemID,
-            'startDate':startDate,
-            'endDate':endDate,
-            'bookingStatus':bookingStatus
+                'bookings':usersBookings,
+                'equipment':equipment,
+                'accountID':accountID,
+                'itemID':itemID,
+                'startDate':startDate,
+                'endDate':endDate,
+                'bookingStatus':bookingStatus
             }
             context['bookingStatus'] = True #authBooking(context)
             print(context['bookingStatus'])
@@ -194,11 +200,12 @@ def bookingPage(request):
                 return render(request,"booking.html",context)
     form = bookingForm()
     context = {
+        'bookings':usersBookings, 
         'equipment':equipment,
         'accountID':1,
         'itemID':1,
         'startDate':1,
         'endDate':1,
         'bookingStatus':False
-        }
+    }
     return render(request,"booking.html", context)
