@@ -48,6 +48,14 @@ body {
     background-color: #444444;
     color: #fff;
 }
+.custom-label {
+    background-color: #444444;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    display: inline-block; /* Ensure inline display */
+    margin-bottom: 10px; /* Adjust margin */
+}
 
 /* Form inputs and labels */
 .form-group input[type="date"],
