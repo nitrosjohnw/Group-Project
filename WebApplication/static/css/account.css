@@ -1,0 +1,125 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    padding: 30px; /* Increase overall padding */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Styling for left and right sections */
+.left-section,
+.right-section {
+    width: 48%; /* Adjust width as needed */
+    background-color: #ffffff;
+    border-radius: 12px; /* Increase border radius */
+    padding: 30px; /* Increase padding */
+    box-sizing: border-box;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    border: 2px solid #ddd; /* Grey border for left and right sections */
+    margin-bottom: 30px; /* Add margin between sections */
+}
+
+/* Scrollable table container */
+.scrollable-table-container {
+    max-height: 400px; /* Increase maximum height */
+    overflow-y: auto;
+    border: 2px solid #ddd;
+    border-radius: 12px; /* Increase border radius */
+    margin-bottom: 20px; /* Adjust margin */
+}
+
+/* Table styling */
+.scrollable-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.scrollable-table-container th,
+.scrollable-table-container td {
+    border: 2px solid #ddd;
+    padding: 16px; /* Increase padding */
+    text-align: left;
+}
+
+.scrollable-table-container th {
+    background-color: #444;
+    color: #fff;
+}
+
+/* Form inputs and labels */
+.form-group input[type="date"],
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="submit"],
+.form-group label {
+    width: 100%;
+    padding: 16px; /* Increase padding */
+    margin-bottom: 20px; /* Adjust margin */
+    border: 2px solid #ddd;
+    border-radius: 8px; /* Adjust border radius */
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out; /* Add transition effect */
+    font-size: 16px; /* Increase font size */
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 12px; /* Adjust margin */
+    background-color: #474747; /* Light grey background for label */
+    color: #ffffff; /* Dark grey text color */
+    padding: 16px; /* Increase padding */
+    border-radius: 8px; /* Adjust border radius */
+    border: 2px solid #4b4b4b; /* Grey border for label */
+}
+
+/* Submit button */
+.submit {
+    background-color: #676868;
+    color: #fff;
+    border: none;
+    padding: 18px 24px; /* Increase padding */
+    border-radius: 8px; /* Adjust border radius */
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-size: 16px; /* Increase font size */
+}
+
+.submit:hover {
+    background-color: #4d4d4d;
+}
+
+/* Styling for specific sections */
+.profile-section,
+.change-password-section,
+.booking-history-section {
+    background-color: #8b8b8b; /* Light grey background */
+    border-radius: 12px; /* Increase border radius */
+    padding: 30px; /* Increase padding */
+    margin-bottom: 30px; /* Add margin between sections */
+    border: 2px solid #ddd; /* Grey border for specific sections */
+    min-height: 500px; /* Set minimum height for the sections */
+}
+
+/* Section titles */
+.profile-section h2,
+.change-password-section h2,
+.booking-history-section h2 {
+    margin-top: 0;
+    color: #fff; /* White text color for h2 */
+    font-size: 24px; /* Increase font size */
+    font-weight: bold; /* Set font weight */
+}
+
+/* Username styling */
+.profile-section .username {
+    color: #fff; /* White text color */
+    font-weight: bold; /* Set font weight */
+    font-size: 36px; /* Increase font size */
+    text-transform: uppercase; /* Transform text to uppercase */
+}
