@@ -1,19 +1,44 @@
-/* Add scrollable table container */
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.left-section,
+.right-section {
+    width: 48%; /* Adjust width as needed */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Scrollable table container */
 .scrollable-table-container {
-    max-height: 600px; /* Set the maximum height for scroll */
-    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 400px;
+    overflow-y: auto;
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-bottom: 10px;
 }
 
-/* Style the table inside the scrollable container */
+/* Table styling */
 .scrollable-table-container table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.scrollable-table-container th, .scrollable-table-container td {
+.scrollable-table-container th,
+.scrollable-table-container td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
@@ -24,8 +49,11 @@
     color: #fff;
 }
 
-/* Add styling for form inputs and labels (similar to previous example) */
-.form-group input[type="date"], .form-group input[type="text"], .form-group input[type="submit"] {
+/* Form inputs and labels */
+.form-group input[type="date"],
+.form-group input[type="text"],
+.form-group input[type="submit"],
+.form-group label {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -36,10 +64,10 @@
 
 .form-group label {
     font-weight: bold;
-    margin-bottom: 5px;
     display: block;
 }
 
+/* Submit button */
 .submit {
     background-color: #383838;
     color: #fff;
