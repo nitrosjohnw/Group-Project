@@ -38,19 +38,7 @@ def home(request):
 
     return render(request,"home.html")
 
-def account(request):
-    print("here")
-    if UserLoggedIn(request):
-        print("User is Logged In")
-        usersBookings = getUserBookings(request)
-        context = {
-        'username':GetUserName(request),
-        'bookings':usersBookings
-        }
-        
-        return render(request,"account.html",context)
-    else:
-        return render(request,"login.html")
+
 
 def bookingPage(request):
 
@@ -166,7 +154,18 @@ def userLogout(request):
         request.user = None
         return render(request,"home.html")
 
-
+def account(request):
+    print("here")
+    if UserLoggedIn(request):
+        print("User is Logged In")
+        usersBookings = getUserBookings(request)
+        context = {
+        'username':GetUserName(request),
+        'bookings':usersBookings
+        }
+        return render(request,"account.html",context)
+    else:
+        return loginPage(request)
 
 def bookingPage(request):
     equipment = Equipment.objects.all()
