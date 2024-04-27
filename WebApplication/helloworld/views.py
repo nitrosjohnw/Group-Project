@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from helloworld.models import Equipment, Booking
 # Create your views here.
 
-def UserLoggedIn(request):
+def UserLoggedIn(request): #uop
     if request.user.is_authenticated:
         return True
     else:
@@ -113,7 +113,7 @@ def signUp(request):
             context = {
             'form':form,
             'status':'Invalid Username or Password',
-            }
+            } 
             return render(request,"signup.html",context)
     return render(request,"signup.html")
 
