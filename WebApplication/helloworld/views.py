@@ -52,9 +52,10 @@ def signUp(request):
     # if this is a POST request we need to process the form data
     if request.method == "POST":
         username = request.POST["username"]
+        email = request.POST["email"]
         password = request.POST["password"]
         password2 = request.POST["password2"]
-        # create a form instance and populate it with data from the request:
+         # create a form instance and populate it with data from the request:
         form = signUpForm(request.POST)
         # check whether it's valid:
         if (not(password == password2)):
@@ -63,15 +64,16 @@ def signUp(request):
             'status':'Passwords do not match'
             }
             return render(request,"signup.html",context)
+        
         if form.is_valid():
             try: 
-                user = User.objects.create(username = username) 
+                user = User.objects.create(username = username, email=email,) 
                 user.set_password(password)
                 user.save()
             except:
                 context = {
                 'form':form,
-                'status':'Username already exists'
+                'status':'Username or Email already exists'
                 }
                 return render(request,"signup.html", context)
             
