@@ -12,6 +12,10 @@ def UserLoggedIn(request):
     else:
         return False
 
+def getUserBookings(request):
+    return Booking.objects.filter(account = request.user)
+
+
 def GetUserName(request):
     return request.user.username
     
@@ -35,10 +39,15 @@ def home(request):
     return render(request,"home.html")
 
 def account(request):
+    print("here")
     if UserLoggedIn(request):
+        print("User is Logged In")
+        usersBookings = getUserBookings(request)
         context = {
-        'username':GetUserName(request)
+        'username':GetUserName(request),
+        'bookings':usersBookings
         }
+        
         return render(request,"account.html",context)
     else:
         return render(request,"login.html")
@@ -151,8 +160,6 @@ def loginPage(request):
         return render(request,"login.html",context) 
     
 
-def accountPage(request):
-    return render(request,"account.html")
 
 def userLogout(request):
         logout(request)
@@ -166,7 +173,7 @@ def bookingPage(request):
     if not UserLoggedIn(request):
         return loginPage(request)
     
-    usersBookings = Booking.objects.filter(account = request.user)
+    usersBookings = getUserBookings(request)
     if request.method == "POST":
         print(request.POST)
         form = bookingForm(request.POST)
