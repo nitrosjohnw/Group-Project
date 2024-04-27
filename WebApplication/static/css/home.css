@@ -37,12 +37,13 @@
 .overlay {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-    padding: 10px; /* Add padding around the text */
+    padding: 0px; /* Add padding around the text */
     width: 100%;
 }
 
 .overlay-text {
     color: white;
+    padding: 10px;
     font-size: 32px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility */
     text-align: left;

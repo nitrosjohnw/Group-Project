@@ -12,6 +12,7 @@ body {
     margin: 0 auto;
 }
 
+/* Styling for left and right sections */
 .left-section,
 .right-section {
     width: 48%; /* Adjust width as needed */
@@ -48,13 +49,15 @@ body {
     background-color: #444444;
     color: #fff;
 }
+
+/* Custom label styling */
 .custom-label {
     background-color: #444444;
     color: #fff;
     padding: 8px;
     border-radius: 4px;
-    display: inline-block; /* Ensure inline display */
-    margin-bottom: 10px; /* Adjust margin */
+    display: inline-block;
+    margin-bottom: 10px;
 }
 
 /* Form inputs and labels */
@@ -62,12 +65,13 @@ body {
 .form-group input[type="text"],
 .form-group input[type="submit"],
 .form-group label {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
+    background-color: #444444;
+    color: #fff;
+    padding: 8px;
     border-radius: 4px;
-    box-sizing: border-box;
+    display: inline-block; /* Ensure inline display */
+    margin-bottom: 10px;
+    margin-Top: 10px;
 }
 
 .form-group label {
@@ -83,8 +87,46 @@ body {
     padding: 12px 20px;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .submit:hover {
     background-color: #3f3f3f;
+}
+
+/* Section titles */
+.profile-section h2,
+.change-password-section h2,
+.booking-history-section h2 {
+    background-color: #444444;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    display: inline-block; /* Ensure inline display */
+    margin-bottom: 10px;
+}
+
+/* Username styling */
+.profile-section .username {
+    color: #444; /* Adjust text color */
+    font-weight: bold;
+    font-size: 20px; /* Adjust font size */
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #444444;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.profile-section,
+.change-password-section,
+.booking-history-section{
+    width: 100%; /* Adjust width as needed */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
 }

@@ -6,15 +6,38 @@ from django.contrib.auth.models import User
 from helloworld.models import Equipment, Booking
 # Create your views here.
 
-def UserLoggedIn(request):
+def UserLoggedIn(request): #uop
     if request.user.is_authenticated:
         return True
     else:
         return False
 
+def getUserBookings(request):
+    return Booking.objects.filter(account = request.user)
+
+
 def GetUserName(request):
     return request.user.username
     
+
+def getEquipmentBetweenDate(startDate, endDate):
+    #look at length of booing table that is returned when filtered then take that away from equipment available
+    bookings = Booking.objects.all()
+    equipment = Equipment.objects.all()
+    for booking in bookings:
+        if booking.startDate >= startDate and booking.endDate <= endDate:
+            for equipment in equipment:
+                if equipment.equipmentID == booking.equipmentID:
+                    equipment.equipmentQuantity = equipment.equipmentQuantity - 1
+    
+    
+    for i in equipment:
+        if i.equipmentQuantity >= 0:
+            equipment = equipment.exclude(equipmentID = i.equipmentID)
+    
+    #return the equipment that is available
+    return equipment
+
 def authBooking(bookingDetails):
     canBook = True
     if Equipment.objects.filter(equipmentID = bookingDetails['itemID']).exists() and User.objects.filter(id = bookingDetails['accountID']).exists():
@@ -34,14 +57,7 @@ def home(request):
 
     return render(request,"home.html")
 
-def account(request):
-    if UserLoggedIn(request) == True:
-        context = {
-        'username':GetUserName(request)
-        }
-        return render(request,"account.html",context)
-    else:
-        return render(request,"login.html")
+
 
 def bookingPage(request):
 
@@ -99,7 +115,7 @@ def signUp(request):
             context = {
             'form':form,
             'status':'Invalid Username or Password',
-            }
+            } 
             return render(request,"signup.html",context)
     return render(request,"signup.html")
 
@@ -153,17 +169,32 @@ def loginPage(request):
         return render(request,"login.html",context) 
     
 
-def accountPage(request):
-    return render(request,"account.html")
 
 def userLogout(request):
         logout(request)
         request.user = None
         return render(request,"home.html")
 
+def account(request):
+    print("here")
+    if UserLoggedIn(request):
+        print("User is Logged In")
+        usersBookings = getUserBookings(request)
+        context = {
+        'username':GetUserName(request),
+        'bookings':usersBookings
+        }
+
+        return render(request,"account.html",context)
+    else:
+        return loginPage(request)
+
 def bookingPage(request):
     equipment = Equipment.objects.all()
-
+    if not UserLoggedIn(request):
+        return loginPage(request)
+    
+    usersBookings = getUserBookings(request)
     if request.method == "POST":
         print(request.POST)
         form = bookingForm(request.POST)
@@ -177,12 +208,13 @@ def bookingPage(request):
             
             bookingStatus = True
             context = {
-            'equipment':equipment,
-            'accountID':accountID,
-            'itemID':itemID,
-            'startDate':startDate,
-            'endDate':endDate,
-            'bookingStatus':bookingStatus
+                'bookings':usersBookings,
+                'equipment':equipment,
+                'accountID':accountID,
+                'itemID':itemID,
+                'startDate':startDate,
+                'endDate':endDate,
+                'bookingStatus':bookingStatus
             }
             context['bookingStatus'] = True #authBooking(context)
             print(context['bookingStatus'])
@@ -196,11 +228,12 @@ def bookingPage(request):
                 return render(request,"booking.html",context)
     form = bookingForm()
     context = {
+        'bookings':usersBookings, 
         'equipment':equipment,
         'accountID':1,
         'itemID':1,
         'startDate':1,
         'endDate':1,
         'bookingStatus':False
-        }
+    }
     return render(request,"booking.html", context)

@@ -61,11 +61,5 @@ class Booking(models.Model):
         
     @classmethod
     def create(cls, startDate, endDate, bookingStatus, account, equipment):
-        print("Creating Booking")
-        print(startDate)
-        print(endDate)
-        print(bookingStatus)
-        print(account)
-        print(equipment)
         booking = cls(startDate=startDate, endDate=endDate, bookingStatus = bookingStatus, account = account, equipment = equipment)
         return booking
