@@ -215,62 +215,63 @@ def bookingPage(request):
     
     usersBookings = getUserBookings(request)
     if request.method == "POST":
+        try:
+            if request.POST["Sort"] == "Sort":
+                form = bookingForm(request.POST)
+                if form.is_valid():
+                    startDate = request.POST["startDate"]
+                    endDate = request.POST["endDate"]
+                    equipment = getEquipmentBetweenDate(startDate, endDate)
+                    context = {
+                        'bookings':usersBookings,
+                        'equipment':equipment,
+                        'accountID':1,
+                        'itemID':1,
+                        'startDate':1,
+                        'endDate':1,
+                        'bookingStatus':False
+                    }
+                    return render(request,"booking.html",context)
+        except:
 
-        if request.POST["Sort"] == "Sort":
+            print(request.POST)
             form = bookingForm(request.POST)
             if form.is_valid():
+                #accountID = request.POST["accountID"]
+                user = request.user
+                accountID = user.id
+                itemID = request.POST["itemID"]
                 startDate = request.POST["startDate"]
                 endDate = request.POST["endDate"]
-                equipment = getEquipmentBetweenDate(startDate, endDate)
+                
+                bookingStatus = True
                 context = {
                     'bookings':usersBookings,
                     'equipment':equipment,
-                    'accountID':1,
-                    'itemID':1,
-                    'startDate':1,
-                    'endDate':1,
-                    'bookingStatus':False
+                    'accountID':accountID,
+                    'itemID':itemID,
+                    'startDate':startDate,
+                    'endDate':endDate,
+                    'bookingStatus':bookingStatus
                 }
-                return render(request,"booking.html",context)
-
-        print(request.POST)
-        form = bookingForm(request.POST)
-        if form.is_valid():
-            #accountID = request.POST["accountID"]
-            user = request.user
-            accountID = user.id
-            itemID = request.POST["itemID"]
-            startDate = request.POST["startDate"]
-            endDate = request.POST["endDate"]
-            
-            bookingStatus = True
-            context = {
-                'bookings':usersBookings,
-                'equipment':equipment,
-                'accountID':accountID,
-                'itemID':itemID,
-                'startDate':startDate,
-                'endDate':endDate,
-                'bookingStatus':bookingStatus
-            }
-            context['bookingStatus'] = True #authBooking(context)
-            print(context['bookingStatus'])
-            if context['bookingStatus'] == True:
-                user = User.objects.filter(id = user.id).first()
-                item = Equipment.objects.filter(equipmentID = itemID).first()
-                print(item)
-                booking = Booking.create(startDate, endDate, "O", user,item)
-                booking.save()
-                print("Booking Successful")
-                return render(request,"booking.html",context)
-    form = bookingForm()
-    context = {
-        'bookings':usersBookings, 
-        'equipment':equipment,
-        'accountID':1,
-        'itemID':1,
-        'startDate':1,
-        'endDate':1,
-        'bookingStatus':False
-    }
-    return render(request,"booking.html", context)
+                context['bookingStatus'] = True #authBooking(context)
+                print(context['bookingStatus'])
+                if context['bookingStatus'] == True:
+                    user = User.objects.filter(id = user.id).first()
+                    item = Equipment.objects.filter(equipmentID = itemID).first()
+                    print(item)
+                    booking = Booking.create(startDate, endDate, "O", user,item)
+                    booking.save()
+                    print("Booking Successful")
+                    return render(request,"booking.html",context)
+        form = bookingForm()
+        context = {
+            'bookings':usersBookings, 
+            'equipment':equipment,
+            'accountID':1,
+            'itemID':1,
+            'startDate':1,
+            'endDate':1,
+            'bookingStatus':False
+        }
+        return render(request,"booking.html", context)
