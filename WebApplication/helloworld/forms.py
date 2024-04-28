@@ -12,8 +12,8 @@ class signUpForm(forms.Form):
     password = forms.CharField(label="Password", max_length=50)
     password2 = forms.CharField(label="Password2", max_length=50)
     email = forms.EmailField(label="Email")
-    first_name = forms.CharField(label="First Name", max_length=70)
-    last_name = forms.CharField(label="Last Name", max_length=70)
+    fname = forms.CharField(label="fname", max_length=70)
+    lname = forms.CharField(label="lName", max_length=70)
     class Meta:
         model = User
 

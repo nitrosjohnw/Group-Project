@@ -73,11 +73,6 @@ def signUp(request):
         password2 = request.POST["password2"]
         fname = request.POST["fname"]
         lname = request.POST["lname"]
-        if not all([username, email, password, password2, fname, lname]):
-            context = {
-                'status': 'Please fill in all fields.'
-            }
-            return render(request, "signup.html", context)
 
         if User.objects.filter(email=email).exists():
             context = {
@@ -94,7 +89,8 @@ def signUp(request):
             'status':'Passwords do not match'
             }
             return render(request,"signup.html",context)
-
+        print(form.is_valid())
+        print(form.errors)
         if form.is_valid():
             try: 
                 user = User.objects.create(username = username, email = email, first_name = fname, last_name = lname) 
@@ -128,7 +124,7 @@ def signUp(request):
             form = signUpForm()
             context = {
             'form':form,
-            'status':'Invalid Username or Password or Details',
+            'status':'Invalid Username or Details',
             } 
             return render(request,"signup.html",context)
     return render(request,"signup.html")
