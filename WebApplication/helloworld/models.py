@@ -26,11 +26,11 @@ class Equipment(models.Model):
     equipmentLocation = models.CharField(max_length = 30, choices = LOCATIONS , default = "OTHER")
     equipmentAudit =  models.DateField()
     equipmentStatus = models.CharField(max_length = 20, choices = STATUS, default = "A")
-
+    equipmentComment = models.CharField(max_length = 200, default = "")
     equipmentID = models.CharField(max_length = 30, primary_key = True)
     
     def __str__(self):
-        return self.equipmentID  
+        return self.equipmentName 
     
     @classmethod
     def create(cls, equipmentName, equipmentType, equipmentQuantity, equipmentLocation, equipmentAudit, equipmentStatus, equipmentID):
@@ -57,7 +57,7 @@ class Booking(models.Model):
     #adminID = models.ForeignKey('Admin_Account', on_delete = models.SET_NULL, null = True)
     
     def __str__(self):
-        return str(self.bookingID)
+        return str(self.bookingID) + " " + self.account.username + " " + self.equipment.equipmentName
         
     @classmethod
     def create(cls, startDate, endDate, bookingStatus, account, equipment):
