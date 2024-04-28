@@ -85,7 +85,7 @@ def signUp(request):
                 'status': 'Email already in use'
             }
             return render(request, "signup.html", context)
-         # create a form instance and populate it with data from the request:
+        # create a form instance and populate it with data from the request:
         form = signUpForm(request.POST)
         # check whether it's valid:
         if (not(password == password2)):
@@ -94,12 +94,10 @@ def signUp(request):
             'status':'Passwords do not match'
             }
             return render(request,"signup.html",context)
-       
+
         if form.is_valid():
             try: 
-                user = User.objects.create(username = username, email = email,) 
-                user.first_name = fname
-                user.last_name = lname
+                user = User.objects.create(username = username, email = email, first_name = fname, last_name = lname) 
                 user.set_password(password)
                 user.save()
             except:
@@ -130,7 +128,7 @@ def signUp(request):
             form = signUpForm()
             context = {
             'form':form,
-            'status':'Invalid Username or Password',
+            'status':'Invalid Username or Password or Details',
             } 
             return render(request,"signup.html",context)
     return render(request,"signup.html")
@@ -150,7 +148,7 @@ def loginPage(request):
             'status':'Already Logged In'
             }
             return render(request,"home.html",context)
-       
+
         if form.is_valid():
             print("Form is Valid")
             user = authenticate(request, username=username, password=password)
@@ -194,12 +192,13 @@ def userLogout(request):
         return render(request,"home.html")
 
 def account(request):
-    print("here")
     if UserLoggedIn(request):
-        print("User is Logged In")
         usersBookings = getUserBookings(request)
         context = {
         'username':GetUserName(request),
+        'email':request.user.email,
+        'first_name':request.user.first_name,
+        'last_name':request.user.last_name,
         'bookings':usersBookings
         }
 
@@ -212,8 +211,28 @@ def bookingPage(request):
     if not UserLoggedIn(request):
         return loginPage(request)
     
+    
+    
     usersBookings = getUserBookings(request)
     if request.method == "POST":
+
+        if request.POST["Sort"] == "Sort":
+            form = bookingForm(request.POST)
+            if form.is_valid():
+                startDate = request.POST["startDate"]
+                endDate = request.POST["endDate"]
+                equipment = getEquipmentBetweenDate(startDate, endDate)
+                context = {
+                    'bookings':usersBookings,
+                    'equipment':equipment,
+                    'accountID':1,
+                    'itemID':1,
+                    'startDate':1,
+                    'endDate':1,
+                    'bookingStatus':False
+                }
+                return render(request,"booking.html",context)
+
         print(request.POST)
         form = bookingForm(request.POST)
         if form.is_valid():
