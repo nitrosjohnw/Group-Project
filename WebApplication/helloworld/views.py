@@ -73,7 +73,12 @@ def signUp(request):
         password2 = request.POST["password2"]
         fname = request.POST["fname"]
         lname = request.POST["lname"]
-        
+        if not all([username, email, password, password2, fname, lname]):
+            context = {
+                'status': 'Please fill in all fields.'
+            }
+            return render(request, "signup.html", context)
+
         if User.objects.filter(email=email).exists():
             context = {
                 'form': signUpForm(),
