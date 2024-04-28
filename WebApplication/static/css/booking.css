@@ -4,17 +4,7 @@ body {
     background-color: #ffffff;
     padding: 20px;
 }
-.logo-container2 {
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    padding: 20px;
-}
 
-.logo-img2 {
-    width: 700px; /* Set a specific width for the image */
-    height: auto; /* Maintain aspect ratio */
-}
 .container {
     display: flex;
     justify-content: space-between;
@@ -49,7 +39,7 @@ body {
 
 .scrollable-table-container th,
 .scrollable-table-container td {
-    border: 1px solid #ffffff;
+    border: 1px solid #d3d3d3;
     padding: 8px;
     text-align: left;
 }

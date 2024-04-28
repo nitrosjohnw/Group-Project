@@ -82,10 +82,10 @@ body {
     display: flex;
     justify-content: left;
     align-items: left;
-    padding: 20px;
+    padding: 10px;
 }
 
 .logo-img2 {
-    width: 700px; /* Set a specific width for the image */
+    width: 500px; /* Set a specific width for the image */
     height: auto; /* Maintain aspect ratio */
 }
