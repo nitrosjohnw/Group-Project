@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/support.css' %}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="header">
+        <h1>Support</h1>
+    </div>
+
+    <div class="container">
+        <div class="left-section">
+            <div class="booking-form">
+                <!-- Your booking form content goes here -->
+                <div class="form-group">
+                    <label class="desc">Title:</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label class="desc">Description of Problem:</label>
+                    <input class = "box-L" type="text">
+                </div>
+                <input class="submit" type="submit" name="Sort" value="Submit">
+            </div>
+        </div>
+        <div class="right-section">
+            <!-- Booking history section with scrollable table -->
+            <div class="booking-history">
+                <div class="scrollable-table-container">
+                    {% csrf_token %}
+                    {% include 'bookingtable.html' %}
+                </div>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="issue_type" value="broken">
+                        Broken
+                    </label>
+                    <label>
+                        <input type="radio" name="issue_type" value="lost">
+                        Lost
+                    </label>
+                </div>
+                <input class="submit" type="submit" name="Sort" value="Submit">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

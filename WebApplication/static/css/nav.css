@@ -78,3 +78,14 @@ body {
     background-color: #666; 
     color: white; 
 }
+.logo-container2 {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    padding: 20px;
+}
+
+.logo-img2 {
+    width: 700px; /* Set a specific width for the image */
+    height: auto; /* Maintain aspect ratio */
+}
