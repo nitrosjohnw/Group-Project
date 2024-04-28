@@ -30,7 +30,7 @@ class Equipment(models.Model):
     equipmentID = models.CharField(max_length = 30, primary_key = True)
     
     def __str__(self):
-        return self.equipmentName 
+        return self.equipmentName + " " + self.equipmentID
     
     @classmethod
     def create(cls, equipmentName, equipmentType, equipmentQuantity, equipmentLocation, equipmentAudit, equipmentStatus, equipmentID):
