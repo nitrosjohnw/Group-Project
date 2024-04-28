@@ -12,15 +12,14 @@
     {% block content %}
 
     {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
+    <p></p>
     {% endif %}
 
     {% if next %}
     {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-        please login with an account that has access.</p>
+    <p></p>
     {% else %}
-    <p>Please login to see this page.</p>
+    <p></p>
     {% endif %}
     {% endif %}
     <div class="logo-container">
