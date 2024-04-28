@@ -30,6 +30,6 @@ urlpatterns = [
     path('account/',views.account , name='account'),
     path('logout/',views.userLogout , name='logout'),
     path('signup/',views.signUp , name='signup'),
-    
+    path('support/',views.support , name='support'),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

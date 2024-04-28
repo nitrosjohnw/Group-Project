@@ -182,7 +182,8 @@ def loginPage(request):
         }
         return render(request,"login.html",context) 
     
-
+def support(request):
+    return render(request,"support.html")
 
 def userLogout(request):
         logout(request)
