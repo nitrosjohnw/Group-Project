@@ -71,6 +71,15 @@ def signUp(request):
         email = request.POST["email"]
         password = request.POST["password"]
         password2 = request.POST["password2"]
+        fname = request.POST["fname"]
+        lname = request.POST["lname"]
+        
+        if User.objects.filter(email=email).exists():
+            context = {
+                'form': signUpForm(),
+                'status': 'Email already in use'
+            }
+            return render(request, "signup.html", context)
          # create a form instance and populate it with data from the request:
         form = signUpForm(request.POST)
         # check whether it's valid:
@@ -80,16 +89,18 @@ def signUp(request):
             'status':'Passwords do not match'
             }
             return render(request,"signup.html",context)
-        
+       
         if form.is_valid():
             try: 
-                user = User.objects.create(username = username, email=email,) 
+                user = User.objects.create(username = username, email = email,) 
+                user.first_name = fname
+                user.last_name = lname
                 user.set_password(password)
                 user.save()
             except:
                 context = {
                 'form':form,
-                'status':'Username or Email already exists'
+                'status':'Username already exists'
                 }
                 return render(request,"signup.html", context)
             
@@ -118,6 +129,7 @@ def signUp(request):
             } 
             return render(request,"signup.html",context)
     return render(request,"signup.html")
+    
 
 def loginPage(request):
     # if this is a POST request we need to process the form data
@@ -133,6 +145,7 @@ def loginPage(request):
             'status':'Already Logged In'
             }
             return render(request,"home.html",context)
+       
         if form.is_valid():
             print("Form is Valid")
             user = authenticate(request, username=username, password=password)
