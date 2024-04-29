@@ -32,7 +32,7 @@ def getEquipmentBetweenDate(startDate, endDate):
         if booking.startDate >= startDate and booking.endDate <= endDate:
             for item in range(len(equipment)):
                 if equipment[item] == booking.equipment:
-                    print(equipment[item].equipmentName + " " + "-1")
+                    #print(equipment[item].equipmentName + " "+str(equipment[item].equipmentQuantity)+ " " + "-1")
                     equipment[item].equipmentQuantity = equipment[item].equipmentQuantity - 1
     
     
