@@ -20,14 +20,14 @@ class Equipment(models.Model):
     ]
 
     # Equipment Details
-    equipmentName = models.CharField(max_length = 30)
-    equipmentType = models.CharField(max_length = 30)
-    equipmentQuantity = models.IntegerField( default= 1)
-    equipmentLocation = models.CharField(max_length = 30, choices = LOCATIONS , default = "OTHER")
+    equipmentName = models.CharField(max_length = 30,verbose_name = 'Name')
+    equipmentType = models.CharField(max_length = 30,verbose_name = 'Type')
+    equipmentQuantity = models.IntegerField( default= 1,verbose_name = 'Quantity')
+    equipmentLocation = models.CharField(max_length = 30, choices = LOCATIONS , default = "OTHER",verbose_name = 'Location')
     equipmentAudit =  models.DateField()
-    equipmentStatus = models.CharField(max_length = 20, choices = STATUS, default = "A")
+    equipmentStatus = models.CharField(max_length = 20, choices = STATUS, default = "A",verbose_name = 'Status')
     equipmentComment = models.CharField(max_length = 200, default = "")
-    equipmentID = models.CharField(max_length = 30, primary_key = True)
+    equipmentID = models.CharField(max_length = 30, primary_key = True,verbose_name = 'Equip_ID')
     
     def __str__(self):
         return self.equipmentName + " " + self.equipmentID
