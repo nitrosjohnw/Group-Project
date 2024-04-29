@@ -20,26 +20,39 @@ def getUserBookings(request):
 def GetUserName(request):
     return request.user.username
     
-
+def doDatesOverlap(start_date_a, end_date_a, start_date_b, end_date_b):
+    # Check if end_date_a is before or equal to start_date_b or start_date_a is after or equal to end_date_b
+    if end_date_a <= start_date_b or start_date_a >= end_date_b:
+        return False
+    else:
+        return True
+    
 def getEquipmentBetweenDate(startDate, endDate):
     startDate = datetime.datetime.strptime(startDate, '%Y-%m-%d').date()
     endDate = datetime.datetime.strptime(endDate, '%Y-%m-%d').date()
     #look at length of booing table that is returned when filtered then take that away from equipment available
     bookings = Booking.objects.all()
     equipment = Equipment.objects.all()
-    print(equipment)
+    equipment = list(equipment)
+    newEquipment = {}
     for booking in bookings:
-        if booking.startDate >= startDate and booking.endDate <= endDate:
+        if (doDatesOverlap(startDate, endDate, booking.startDate, booking.endDate)):
             for item in range(len(equipment)):
+
                 if equipment[item] == booking.equipment:
-                    print(equipment[item].equipmentName + " " + "-1")
+                    print(equipment[item].equipmentName + " "+str(equipment[item].equipmentQuantity)+ " " + "-1")
                     equipment[item].equipmentQuantity = equipment[item].equipmentQuantity - 1
+
     
+    items = len(equipment)
+    newEquipment = []
+    for item in range(items):
+        #print(str(equipment[item].equipmentQuantity) + " " + equipment[item].equipmentName)
+        if equipment[item].equipmentQuantity <= 0:
+            continue
+        newEquipment.append(equipment[item])
     
-    for item in equipment:
-        if item.equipmentQuantity <= 0:
-            equipment = equipment.exclude(equipmentID = item.equipmentID)
-    
+    equipment = newEquipment
     #return the equipment that is available
     return equipment
 
@@ -206,11 +219,8 @@ def account(request):
         return loginPage(request)
 
 def bookingPage(request):
-    equipment = Equipment.objects.all()
     if not UserLoggedIn(request):
         return loginPage(request)
-
-    print(request.POST)
     usersBookings = getUserBookings(request)
     if request.method == "POST":
         if request.POST["Sort"] == "Sort":
@@ -223,41 +233,41 @@ def bookingPage(request):
                 'equipment':equipment,
                 'accountID':1,
                 'itemID':1,
-                'startDate':1,
-                'endDate':1,
-                'bookingStatus':False
-            }
-            return render(request,"booking.html",context)
-        
-        form = bookingForm(request.POST)
-        if form.is_valid():
-            #accountID = request.POST["accountID"]
-            user = request.user
-            accountID = user.id
-            itemID = request.POST["itemID"]
-            startDate = request.POST["startDate"]
-            endDate = request.POST["endDate"]
-            
-            bookingStatus = True
-            context = {
-                'bookings':usersBookings,
-                'equipment':equipment,
-                'accountID':accountID,
-                'itemID':itemID,
                 'startDate':startDate,
                 'endDate':endDate,
-                'bookingStatus':bookingStatus
             }
-            context['bookingStatus'] = True #authBooking(context)
-            print(context['bookingStatus'])
-            if context['bookingStatus'] == True:
-                user = User.objects.filter(id = user.id).first()
-                item = Equipment.objects.filter(equipmentID = itemID).first()
-                print(item)
-                booking = Booking.create(startDate, endDate, "O", user,item)
-                booking.save()
-                print("Booking Successful")
-                return render(request,"booking.html",context)
+            return render(request,"booking.html",context)
+        else:
+            equipment = Equipment.objects.all()
+            form = bookingForm(request.POST)
+            if form.is_valid():
+                #accountID = request.POST["accountID"]
+                user = request.user
+                accountID = user.id
+                itemID = request.POST["itemID"]
+                startDate = request.POST["startDate"]
+                endDate = request.POST["endDate"]
+                
+                bookingStatus = True
+                context = {
+                    'bookings':usersBookings,
+                    'equipment':equipment,
+                    'accountID':accountID,
+                    'itemID':itemID,
+                    'startDate':startDate,
+                    'endDate':endDate,
+                    'bookingStatus':bookingStatus
+                }
+                context['bookingStatus'] = True #authBooking(context)
+                print(context['bookingStatus'])
+                if context['bookingStatus'] == True:
+                    user = User.objects.filter(id = user.id).first()
+                    item = Equipment.objects.filter(equipmentID = itemID).first()
+                    print(item)
+                    booking = Booking.create(startDate, endDate, "O", user,item)
+                    booking.save()
+                    print("Booking Successful")
+                    return render(request,"booking.html",context)
     form = bookingForm()
     context = {
         'bookings':usersBookings, 
