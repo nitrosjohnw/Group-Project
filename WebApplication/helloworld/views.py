@@ -155,7 +155,8 @@ def loginPage(request):
         if request.user.is_authenticated:
             context = {
             'form':form,
-            'status':'Already Logged In'
+            'status':'Already Logged In',
+            'user': request.user,
             }
             return render(request,"home.html",context)
 
