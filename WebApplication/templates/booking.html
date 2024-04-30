@@ -1,39 +1,46 @@
-{% load static %}
+{% load static %} <!-- Loading static files to use within the template -->
+
 <html>
 <head>
-    <title>Item Booking System</title>
-    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
+    <title>Item Booking System</title> <!-- Setting the tab title -->
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}"> <!-- Linking to the external CSS file -->
 </head>
 <body>
-    {% include 'navbar.html' %}
+    {% include 'navbar.html' %} <!-- Including the 'navbar.html' file to display the navigation bar -->
+
     <div class="header">
-        <h1>Booking</h1>
+        <h1>Booking</h1> <!-- Displaying the title "Booking" in the header -->
     </div>
 
     <div class="container">
         <div class="left-section">
             <div class="booking-form">
-                <form method="post" action="{% url 'booking' %}">
-                    {% csrf_token %}
+                <form method="post" action="{% url 'booking' %}"> <!-- Creating a form with a POST method that submits to the 'booking' URL -->
+                    {% csrf_token %} <!-- CSRF token to protect against Cross-Site Request Forgery -->
+
+                    <!-- Input fields for booking start and end dates -->
                     <label for="bookingStartDate" class="custom-label">Booking start date</label>
-                    <input id="bookingStartDate" name="startDate" type="date" value="{{ startDate }}">
+                    <input id="bookingStartDate" name="startDate" type="date" value="{{ startDate }}"> <!-- Displaying or initializing the start date -->
                     <label for="bookingEndDate" class="custom-label">Booking end date</label>
-                    <input id="bookingEndDate" name="endDate" type="date" value="{{ endDate }}">
-                    <input class="submit" type="submit" name="Sort" value="Sort">
+                    <input id="bookingEndDate" name="endDate" type="date" value="{{ endDate }}"> <!-- Displaying or initializing the end date -->
+
+                    <input class="submit" type="submit" name="Sort" value="Sort"> <!-- Sort button within the form -->
+
                     <div class="form-group">
                         <div class="scrollable-table-container">
-                            {% include 'bookingtable.html' %}
+                            {% include 'bookingtable.html' %} <!-- Including a booking table from 'bookingtable.html' within a scrollable container -->
                         </div>
-
                     </div>
-                    <input class="submit" type="submit" name = "Sort" value="Submit">
+
+                    <input class="submit" type="submit" name="Sort" value="Submit"> <!-- Submit button within the form -->
                 </form>
             </div>
         </div>
+
         <div class="right-section">
             <div class="booking-history">
                 <div class="scrollable-table-container">
-                {% include 'userbookingtable.html' %}
+                    {% include 'userbookingtable.html' %} <!-- Including a user booking table from 'userbookingtable.html' within a scrollable container -->
                 </div>
             </div>
         </div>

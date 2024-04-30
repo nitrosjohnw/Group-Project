@@ -1,40 +1,40 @@
 {% load static %}
 <html>
 <head>
-    <title>Account</title>
-    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    <title>Account</title> <!-- setting tab title to account -->
+    <link rel="stylesheet" href="{% static 'css/account.css' %}"> // linking the external styling sheet -->
 </head>
 <body>
-    {% include 'navbar.html' %}
-    <div class="header">
-        <h1>Account</h1>
+    {% include 'navbar.html' %}    <!--including the navbar.html -->
+    <div class="header"> <!-- given class names to style in the css -->
+        <h1>Account</h1><!-- displaying title accounts  -->
     </div>
 
     <div class="container">
-        <div class="grey-container">
+        <div class="grey-container"> <!--styling container for section with grey background-->
             <div class="profile-section">
                 <h2>Profile</h2>
-                <p>Username: {{ user.username }}</p>
-                <p>First Name: {{ user.first_name }}</p>
-                <p>Last Name: {{ user.last_name}}</p>
+                <p>Username: {{ user.username }}</p><!-- Displaying the username of the logged-in user -->
+                <p>First Name: {{ user.first_name }}</p><!-- Displaying the first name of the logged-in user -->
+                <p>Last Name: {{ user.last_name}}</p><!-- Displaying the last name of the logged-in user -->
             </div>
         </div>
         
-        <div class="grey-container">
+        <div class="grey-container"><!--anothr grey container that is styled in the css-->
             <div class="change-password-section">
                 <h2>Change Password</h2>
                 <form>
                     <div class="form-group">
                         <label for="currentPassword">Current Password:</label>
-                        <input id="currentPassword" name="current_password" type="password" required>
+                        <input id="currentPassword" name="current_password" type="password" required><!-- Input field for entering the current password -->
                     </div>
                     <div class="form-group">
                         <label for="newPassword">New Password:</label>
-                        <input id="newPassword" name="new_password1" type="password" required>
+                        <input id="newPassword" name="new_password1" type="password" required><!-- Input field for entering the New password -->
                     </div>
                     <div class="form-group">
                         <label for="confirmNewPassword">Confirm New Password:</label>
-                        <input id="confirmNewPassword" name="new_password2" type="password" required>
+                        <input id="confirmNewPassword" name="new_password2" type="password" required><!-- Input field for entering the new password again-->
                     </div>
                     <input class="submit" type="submit" value="Change Password">
                 </form>
@@ -45,7 +45,7 @@
             <div class="booking-history-section">
                 <h2>Booking History</h2>
                 <div class="scrollable-table-container">
-                    {% include 'userbookingtable.html' %}
+                    {% include 'userbookingtable.html' %}<!-- Including a booking table (from 'userbookingtable.html') within a scrollable container -->
                 </div>
             </div>
         </div>

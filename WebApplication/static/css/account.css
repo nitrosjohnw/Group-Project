@@ -1,63 +1,62 @@
-/* General styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    padding: 20px;
+    font-family: Arial, sans-serif; /* Set the font family for the entire body */
+    background-color: #ffffff; /* Set the background color of the body */
+    padding: 20px; /* Add padding around the content inside the body */
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: flex; /* Use flexbox layout for the container */
+    justify-content: space-between; /* Space evenly between the left and right sections */
+    max-width: 1200px; /* Set the maximum width of the container */
+    margin: 0 auto; /* Center the container horizontally */
 }
 
 /* Styling for left and right sections */
 .left-section,
 .right-section {
-    width: 48%; /* Adjust width as needed */
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 20px;
-    box-sizing: border-box;
+    width: 48%; /* Set the width of both sections */
+    background-color: #fff; /* Set the background color of the sections */
+    border: 1px solid #ddd; /* Add a border around the sections */
+    border-radius: 4px; /* Add border radius to create rounded corners */
+    padding: 20px; /* Add padding inside the sections */
+    box-sizing: border-box; /* Include padding and border in the total width */
 }
 
 /* Scrollable table container */
 .scrollable-table-container {
-    max-height: 400px;
-    overflow-y: auto;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    max-height: 400px; /* Set the maximum height of the scrollable container */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds container height */
+    border: 1px solid #ddd; /* Add a border around the scrollable container */
+    border-radius: 4px; /* Add border radius to create rounded corners */
+    margin-bottom: 10px; /* Add margin at the bottom of the container */
 }
 
 /* Table styling */
 .scrollable-table-container table {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100%; /* Set the table width to 100% of its container */
+    border-collapse: collapse; /* Collapse borders between table cells */
 }
 
 .scrollable-table-container th,
 .scrollable-table-container td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+    border: 1px solid #ddd; /* Add border to table headers and cells */
+    padding: 8px; /* Add padding inside table headers and cells */
+    text-align: left; /* Align text to the left within table headers and cells */
 }
 
 .scrollable-table-container th {
-    background-color: #444444;
-    color: #fff;
+    background-color: #444444; /* Set background color of table header */
+    color: #fff; /* Set text color of table header */
 }
 
 /* Custom label styling */
 .custom-label {
-    background-color: #444444;
-    color: #fff;
-    padding: 8px;
-    border-radius: 4px;
-    display: inline-block;
-    margin-bottom: 10px;
+    background-color: #444444; /* Set background color of custom labels */
+    color: #fff; /* Set text color of custom labels */
+    padding: 8px; /* Add padding inside custom labels */
+    border-radius: 4px; /* Add border radius to create rounded corners */
+    display: inline-block; /* Display labels as inline-block elements */
+    margin-bottom: 10px; /* Add margin at the bottom of custom labels */
 }
 
 /* Form inputs and labels */
@@ -65,98 +64,63 @@ body {
 .form-group input[type="text"],
 .form-group input[type="submit"],
 .form-group label {
-    background-color: #444444;
-    color: #fff;
-    padding: 8px;
-    border-radius: 4px;
-    display: inline-block; /* Ensure inline display */
-    margin-bottom: 10px;
-    margin-Top: 10px;
+    background-color: #444444; /* Set background color of form inputs and labels */
+    color: #fff; /* Set text color of form inputs and labels */
+    padding: 8px; /* Add padding inside form inputs and labels */
+    border-radius: 4px; /* Add border radius to create rounded corners */
+    display: inline-block; /* Display form elements as inline-block */
+    margin-bottom: 10px; /* Add margin at the bottom of form elements */
+    margin-top: 10px; /* Add margin at the top of form elements */
 }
 
 .form-group label {
-    font-weight: bold;
-    display: block;
+    font-weight: bold; /* Set font weight of form labels to bold */
+    display: block; /* Display form labels as block elements */
 }
 
 /* Submit button */
 .submit {
-    background-color: #383838;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
+    background-color: #383838; /* Set background color of submit button */
+    color: #fff; /* Set text color of submit button */
+    border: none; /* Remove border from submit button */
+    padding: 12px 20px; /* Add padding inside submit button */
+    border-radius: 4px; /* Add border radius to create rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    margin-top: 10px; /* Add margin at the top of submit button */
 }
 
 .submit:hover {
-    background-color: #3f3f3f;
+    background-color: #3f3f3f; /* Change background color on hover */
 }
 
 /* Section titles */
 .profile-section h2,
 .change-password-section h2,
 .booking-history-section h2 {
-    background-color: #444444;
-    color: #fff;
-    padding: 8px;
-    border-radius: 4px;
-    display: inline-block; /* Ensure inline display */
-    margin-bottom: 10px;
+    background-color: #444444; /* Set background color of section titles */
+    color: #fff; /* Set text color of section titles */
+    padding: 8px; /* Add padding inside section titles */
+    border-radius: 4px; /* Add border radius to create rounded corners */
+    display: inline-block; /* Display section titles as inline-block elements */
+    margin-bottom: 10px; /* Add margin at the bottom of section titles */
 }
 
 /* Username styling */
 .profile-section .username {
-    color: #444; /* Adjust text color */
-    font-weight: bold;
-    font-size: 20px; /* Adjust font size */
-    text-transform: uppercase;
-    padding: 10px;
-    border-radius: 4px;
-    background-color: #444444;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.profile-section,
-.change-password-section,
-.booking-history-section{
-    width: 100%; /* Adjust width as needed */
-    background-color: #cecece;
-    border: 1px solid #cecece;
-    border-radius: 4px;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-top: 20px;
-}
-
-
-.container p {
-    font-size: 17px;
-    font-weight: bold;
-    color: #ffffff;
-    padding: 10px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    border: 1px solid #444; /* Add a grey border */
-    border-radius: 4px; /* Add border radius for rounded corners */
-    background-color: #444; /* Add a light grey background color */
-}
-/* Styling for h1 */
-h1 {
-    display: inline-block; /* Ensure inline-block to wrap content */
-    background-color: #444444;
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 4px;
-    font-size: 36px;
-    margin-bottom: 20px;
+    color: #444; /* Set text color of username */
+    font-weight: bold; /* Set font weight of username to bold */
+    font-size: 20px; /* Set font size of username */
+    text-transform: uppercase; /* Transform username text to uppercase */
+    padding: 10px; /* Add padding inside username container */
+    border-radius: 4px; /* Add border radius to create rounded corners */
+    background-color: #444444; /* Set background color of username container */
+    display: inline-block; /* Display username as inline-block element */
+    margin-bottom: 10px; /* Add margin at the bottom of username container */
 }
 
 /* Header styling */
 .header {
-    text-align: center;
-    color: #fff;
-    padding: 20px 0;
+    text-align: center; /* Align text in header to the center */
+    color: #fff; /* Set text color of header */
+    padding: 20px 0; /* Add padding above and below header text */
 }

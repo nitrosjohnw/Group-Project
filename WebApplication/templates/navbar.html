@@ -1,35 +1,43 @@
-{% load static %}
+{% load static %} <!-- Loading static files to use within the template -->
+
 <head>
-    <title>Navigation Bar</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=InterVogue+Medium&display=swap" rel="stylesheet">
+    <title>Navigation Bar</title> <!-- Setting the tab title to "Navigation Bar" -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}"> <!-- Linking to an external CSS file 'nav.css' located in the 'static' directory -->
+    <link href="https://fonts.googleapis.com/css2?family=InterVogue+Medium&display=swap" rel="stylesheet"> <!-- Linking to Google Fonts to use the InterVogue Medium font -->
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-left">
             <ul class="nav-header">
-                <li class = "nav-Button" ><a href="{% url 'home' %}">Home</a></li>
-                <li class = "nav-Button" ><a href="{% url 'booking' %}">Booking</a></li>
-                <li class = "nav-Button" ><a href="{% url 'support' %}">Support</a></li>
-                <li class = "nav-Button" ><a href="{% url 'account' %}">Account</a></li>
+                <!-- Navigation links on the left side -->
+                <li class="nav-Button"><a href="{% url 'home' %}">Home</a></li>
+                <li class="nav-Button"><a href="{% url 'booking' %}">Booking</a></li>
+                <li class="nav-Button"><a href="{% url 'support' %}">Support</a></li>
+                <li class="nav-Button"><a href="{% url 'account' %}">Account</a></li>
             </ul>
         </div>
         <div class="nav-right">
+            <!-- Display different options based on user authentication status -->
             {% if user.is_authenticated %}
+                <!-- Display Logout link if user is authenticated -->
                 <a href="{% url 'logout' %}" class="nav-button">Logout</a>
             {% else %}
+                <!-- Display Login link if user is not authenticated -->
                 <a href="{% url 'login' %}" class="nav-button">Login</a>
             {% endif %}
         </div>
-
     </nav>
-    <div class = "statusbar">
+
+    <!-- Status bar to display any status message -->
+    <div class="statusbar">
         {% if status %}
-            <p>{{ status }}</p>
+            <p>{{ status }}</p> <!-- Displaying status message "logged in" if available -->
         {% endif %}
     </div>
+
+    <!-- Logo container at the bottom of the navigation bar -->
     <div class="logo-container2">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/University_of_Westminster_Logo.jpg" alt="University of Westminster Logo" class="logo-img2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/University_of_Westminster_Logo.jpg" alt="University of Westminster Logo" class="logo-img2"> <!-- Displaying the University of Westminster logo -->
     </div>
 </body>
 </html>

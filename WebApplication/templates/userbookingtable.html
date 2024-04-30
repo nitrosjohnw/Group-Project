@@ -1,15 +1,25 @@
 <table>
+    <!-- Table headers -->
     <tr>
         <th>Equipment</th>
         <th>Start Date</th>
         <th>End Date</th>
         <th>Booking Status</th>
     </tr>
+
+    <!-- Loop through bookings and display each booking as a table row -->
     {% for booking in bookings %}
     <tr>
+        <!-- Display equipment name -->
         <td>{{ booking.equipment.equipmentName }}</td>
+
+        <!-- Display start date of booking -->
         <td>{{ booking.startDate }}</td>
+
+        <!-- Display end date of booking -->
         <td>{{ booking.endDate }}</td>
+
+        <!-- Display booking status -->
         <td>{{ booking.bookingStatus }}</td>
     </tr>
     {% endfor %}
