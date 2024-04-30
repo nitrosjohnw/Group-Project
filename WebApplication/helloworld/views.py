@@ -192,6 +192,9 @@ def loginPage(request):
         return render(request,"login.html",context) 
     
 def support(request):
+    if not UserLoggedIn(request):
+        return loginPage(request)
+    
     usersBookings = getUserBookings(request)
     context = {
         'username':GetUserName(request),
