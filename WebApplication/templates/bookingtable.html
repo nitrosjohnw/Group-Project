@@ -1,18 +1,19 @@
 <table>
     <tr>
-        <th></th>
-        <th>Equipment Name</th>
-        <th>Equipment Type</th>
-        <th>Equipment Quantity</th>
-        <th>Equipment Location</th>
+        <th></th> <!-- Header column for radio button selection (empty for spacing) -->
+        <th>Equipment Name</th> <!-- Header column for Equipment Name -->
+        <th>Equipment Type</th> <!-- Header column for Equipment Type -->
+        <th>Equipment Quantity</th> <!-- Header column for Equipment Quantity -->
+        <th>Equipment Location</th> <!-- Header column for Equipment Location -->
     </tr>
     {% for item in equipment %}
     <tr>
         <td><input type="radio" name="itemID" id="item{{ item.equipmentID }}" value="{{ item.equipmentID }}"></td>
-        <td>{{ item.equipmentName }}</td>
-        <td>{{ item.equipmentType }}</td>
-        <td>{{ item.equipmentQuantity }}</td>
-        <td>{{ item.equipmentLocation }}</td>
+        <!-- Radio button for item selection, with unique ID and value assigned -->
+        <td>{{ item.equipmentName }}</td> <!-- Displaying Equipment Name -->
+        <td>{{ item.equipmentType }}</td> <!-- Displaying Equipment Type -->
+        <td>{{ item.equipmentQuantity }}</td> <!-- Displaying Equipment Quantity -->
+        <td>{{ item.equipmentLocation }}</td> <!-- Displaying Equipment Location -->
     </tr>
     {% endfor %}
 </table>

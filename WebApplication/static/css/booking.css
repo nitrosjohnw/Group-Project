@@ -1,107 +1,113 @@
-/* General styling */
+/* General styling for the body */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    padding: 20px;
+    font-family: Arial, sans-serif; /* Set the font family for the entire body */
+    background-color: #ffffff; /* Set the background color of the body */
+    padding: 20px; /* Add padding around the content inside the body */
 }
 
+/* Styling for the main container */
 .container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: flex; /* Use flexbox layout for the container */
+    justify-content: space-between; /* Space evenly between the left and right sections */
+    max-width: 1200px; /* Set the maximum width of the container */
+    margin: 0 auto; /* Center the container horizontally */
 }
 
+/* Styling for left and right sections */
 .left-section,
 .right-section {
-    width: 48%; /* Adjust width as needed */
-    background-color: #eeeeee;
-    border: 1px solid #eeeeee;
-    border-radius: 4px;
-    padding: 20px;
-    box-sizing: border-box;
+    width: 48%; /* Set the width of both sections */
+    background-color: #eeeeee; /* Set the background color of sections */
+    border: 1px solid #eeeeee; /* Add a border around the sections */
+    border-radius: 4px; /* Add border radius to create rounded corners */
+    padding: 20px; /* Add padding inside the sections */
+    box-sizing: border-box; /* Include padding and border in the total width */
 }
 
 /* Scrollable table container */
 .scrollable-table-container {
-    max-height: 400px;
-    overflow-y: auto;
-    border: 1px solid #ffffff;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    max-height: 400px; /* Set the maximum height of the scrollable container */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds container height */
+    border: 1px solid #ffffff; /* Add a border around the scrollable container */
+    border-radius: 4px; /* Add border radius to create rounded corners */
+    margin-bottom: 10px; /* Add margin at the bottom of the container */
 }
 
 /* Table styling */
 .scrollable-table-container table {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100%; /* Set the table width to 100% of its container */
+    border-collapse: collapse; /* Collapse borders between table cells */
 }
 
 .scrollable-table-container th,
 .scrollable-table-container td {
-    border: 1px solid #d3d3d3;
-    padding: 8px;
-    text-align: left;
+    border: 1px solid #d3d3d3; /* Add border to table headers and cells */
+    padding: 8px; /* Add padding inside table headers and cells */
+    text-align: left; /* Align text to the left within table headers and cells */
 }
 
+/* Styling for table header */
 .scrollable-table-container th {
-    background-color: #444444;
-    color: #fff;
-}
-.custom-label {
-    background-color: #444444;
-    color: #fff;
-    padding: 8px;
-    border-radius: 4px;
-    display: inline-block; /* Ensure inline display */
-    margin-bottom: 10px; /* Adjust margin */
+    background-color: #444444; /* Set background color of table header */
+    color: #fff; /* Set text color of table header */
 }
 
-/* Form inputs and labels */
+/* Styling for custom labels */
+.custom-label {
+    background-color: #444444; /* Set background color of custom labels */
+    color: #fff; /* Set text color of custom labels */
+    padding: 8px; /* Add padding inside custom labels */
+    border-radius: 4px; /* Add border radius to create rounded corners */
+    display: inline-block; /* Display labels as inline-block elements */
+    margin-bottom: 10px; /* Add margin at the bottom of custom labels */
+}
+
+/* Styling for form inputs and labels */
 .form-group input[type="date"],
 .form-group input[type="text"],
 .form-group input[type="submit"],
 .form-group label {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
+    width: 100%; /* Set the width of form elements to 100% */
+    padding: 10px; /* Add padding inside form elements */
+    margin-bottom: 10px; /* Add margin at the bottom of form elements */
+    border: 1px solid #ddd; /* Add border to form elements */
+    border-radius: 4px; /* Add border radius to create rounded corners */
+    box-sizing: border-box; /* Include padding and border in the total width */
 }
 
 .form-group label {
-    font-weight: bold;
-    display: block;
+    font-weight: bold; /* Set font weight of form labels to bold */
+    display: block; /* Display form labels as block elements */
 }
 
-/* Submit button */
+/* Styling for submit button */
 .submit {
-    background-color: #383838;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: #383838; /* Set background color of submit button */
+    color: #fff; /* Set text color of submit button */
+    border: none; /* Remove border from submit button */
+    padding: 12px 20px; /* Add padding inside submit button */
+    border-radius: 4px; /* Add border radius to create rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
 }
 
 .submit:hover {
-    background-color: #3f3f3f;
+    background-color: #3f3f3f; /* Change background color on hover */
 }
+
 /* Styling for h1 */
 h1 {
     display: inline-block; /* Ensure inline-block to wrap content */
-    background-color: #444444;
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 4px;
-    font-size: 36px;
-    margin-bottom: 20px;
+    background-color: #444444; /* Set background color of h1 */
+    color: #fff; /* Set text color of h1 */
+    padding: 12px 20px; /* Add padding inside h1 */
+    border-radius: 4px; /* Add border radius to create rounded corners */
+    font-size: 36px; /* Set font size of h1 */
+    margin-bottom: 20px; /* Add margin at the bottom of h1 */
 }
 
 /* Header styling */
 .header {
-    text-align: center;
-    color: #fff;
-    padding: 20px 0;
+    text-align: center; /* Align text in header to the center */
+    color: #fff; /* Set text color of header */
+    padding: 20px 0; /* Add padding above and below header text */
 }

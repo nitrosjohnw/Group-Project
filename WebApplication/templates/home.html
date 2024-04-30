@@ -1,19 +1,20 @@
-{% load static %}
+{% load static %} <!-- Loading static files to use within the template -->
+
 <html>
-    <head>
-        <title>Item Booking System</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
-        
-    </head>
-    <body>
-        {%include 'navbar.html'%}
+<head>
+    <title>Item Booking System</title> <!-- Setting the tab title to "Item Booking System" -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"> <!-- Linking to the external CSS file 'home.css' located in the 'static' directory -->
+</head>
+<body>
+    {% include 'navbar.html' %} <!-- Including the 'navbar.html' file to display the navigation bar -->
 
-        <div class="background-image">
-            <div class="overlay">
-                <h1 class="overlay-text">Equipment Booking System</h1>
-            </div>
-            <img src="https://media.licdn.com/dms/image/C561BAQEUYApCoEMyHg/company-background_10000/0/1633088668740/university_of_westminster_cover?e=1714665600&v=beta&t=B_eu42R6Jd7wLjbIW5X3L9SD8MdwleThUAHTE6XBLUU" alt="University of Westminster image" class="background-uni-image">
+    <div class="background-image">
+        <div class="overlay">
+            <h1 class="overlay-text">Equipment Booking System</h1> <!-- Heading displayed on top of the background image -->
         </div>
+        <img src="https://media.licdn.com/dms/image/C561BAQEUYApCoEMyHg/company-background_10000/0/1633088668740/university_of_westminster_cover?e=1714665600&v=beta&t=B_eu42R6Jd7wLjbIW5X3L9SD8MdwleThUAHTE6XBLUU" alt="University of Westminster image" class="background-uni-image">
+        <!-- Background image of University of Westminster with a specified URL -->
+    </div>
 
-    </body>
+</body>
 </html>

@@ -1,37 +1,38 @@
-<!-- login.html -->
-{% load static %}
+
+
+{% load static %} <!-- Loading static files to use within the template -->
+
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=InterVogue+Medium&display=swap">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login-out.css' %}">
-    <title>Item Booking System</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login-out.css' %}"> <!-- Linking to an external CSS file 'login-out.css' located in the 'static' directory -->
+    <title>Item Booking System</title> <!-- Setting the tab title -->
 </head>
 <body>
-    {% block content %}
+    {% block content %} <!-- Defines a block named 'content' that can be overridden by child templates -->
     <div class="logo-container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/University_of_Westminster_Logo.jpg" alt="University of Westminster Logo" class="logo-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/University_of_Westminster_Logo.jpg" alt="University of Westminster Logo" class="logo-img"> <!-- University of Westminster Logo displayed within a container -->
     </div>
     <div class="login-container">
         <div class="login-header">
-            <div class="login-option1"><a href="{% url 'login' %}" class="nav-button">Log In</a></div>
-            <div class="login-option"><a href="{% url 'signup' %}" class="nav-button">Sign Up</a></div>
+            <div class="login-option1"><a href="{% url 'login' %}" class="nav-button">Log In</a></div> <!-- Link to the login page using URL named 'login' -->
+            <div class="login-option"><a href="{% url 'signup' %}" class="nav-button">Sign Up</a></div> <!-- Link to the signup page using URL named 'signup' -->
         </div>
         <div class="login-form">
-            <form method="post" action="{% url 'login' %}">
-                {% csrf_token %}
+            <form method="post" action="{% url 'login' %}"> <!-- Form for user login with POST method submitting to the 'login' URL -->
+                {% csrf_token %} <!-- CSRF token to protect against Cross-Site Request Forgery -->
                 <div class="form-group">
                     <label for="id_username">Username:</label>
-                    {{ form.username }}
+                    {{ form.username }} <!-- Displaying the username input field from the login form -->
                 </div>
                 <div class="form-group">
                     <label for="id_password">Password:</label>
-                    <input type="password" id="id_password" name="password">
+                    <input type="password" id="id_password" name="password"> <!-- Password input field -->
                 </div>
-                <input class="submit" type="submit" value="Login">
+                <input class="submit" type="submit" value="Login"> <!-- Submit button for login form -->
             </form>
-            <div class="login-status">{{ status }}</div>
+            <div class="login-status">{{ status }}</div> <!-- Displaying login status message (if any) -->
         </div>
     </div>
-    {% endblock %}
+    {% endblock %} <!-- Closing the 'content' block -->
 </body>
 </html>
