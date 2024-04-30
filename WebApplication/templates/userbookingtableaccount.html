@@ -1,0 +1,22 @@
+<form method="post" action="{% url 'cancelbooking' %}">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <th>Equipment</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Booking Status</th>
+            <th></th>
+        </tr>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.equipment.equipmentName }}</td>
+            <td>{{ booking.startDate }}</td>
+            <td>{{ booking.endDate }}</td>
+            <td>{{ booking.bookingStatus }}</td>
+            <td><button class="submit" type="submit" name="bookingID" value={{booking.bookingID}}>Cancel</button></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</form>

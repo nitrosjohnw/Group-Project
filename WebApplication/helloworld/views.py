@@ -220,6 +220,48 @@ def account(request):
     else:
         return loginPage(request)
 
+
+def cancelBooking(request):
+
+    if UserLoggedIn(request):
+        if request.method == "POST":
+            bookingID = request.POST["bookingID"]
+            print(bookingID)
+            booking = Booking.objects.filter(bookingID = bookingID).first()
+            
+            if booking.account != request.user:
+                context = {
+                    'username':GetUserName(request),
+                    'email':request.user.email,
+                    'first_name':request.user.first_name,
+                    'last_name':request.user.last_name,
+                    'bookings':getUserBookings(request),
+                    'status':'You cannot cancel this booking'
+                }
+                return render(request,"account.html",context)
+            booking.delete()
+            context = {
+                'username':GetUserName(request),
+                'email':request.user.email,
+                'first_name':request.user.first_name,
+                'last_name':request.user.last_name,
+                'bookings':getUserBookings(request),
+                'status':'Booking Cancelled'
+            }
+            return render(request,"account.html",context)
+        else:
+            context = {
+                'username':GetUserName(request),
+                'email':request.user.email,
+                'first_name':request.user.first_name,
+                'last_name':request.user.last_name,
+                'bookings':getUserBookings(request),
+                'status':''
+            }
+            return render(request,"account.html",context)
+    else:
+        return loginPage(request)
+
 def bookingPage(request):
     equipment = Equipment.objects.all()
     if not UserLoggedIn(request):
@@ -227,6 +269,7 @@ def bookingPage(request):
 
     usersBookings = getUserBookings(request)
     if request.method == "POST":
+        #if the user wants to sort the equipment
         if request.POST["Sort"] == "Sort":
             startDate = request.POST["startDate"]
             endDate = request.POST["endDate"]
