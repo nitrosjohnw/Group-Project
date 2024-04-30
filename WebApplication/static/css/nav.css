@@ -1,91 +1,110 @@
+/* General styling for the body */
 body {
-    font-family: 'InterVogue Medium', sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'InterVogue Medium', sans-serif; /* Set the font family for the entire body */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
 }
 
-.statusbar{
-    background-color: rgb(29, 146, 29);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 10px;
-    text-align: center;
+/* Styling for the status bar */
+.statusbar {
+    background-color: rgb(29, 146, 29); /* Set the background color of the status bar */
+    display: flex; /* Use flexbox layout for the status bar */
+    justify-content: space-between; /* Space items evenly along the main axis */
+    align-items: center; /* Align items vertically within the status bar */
+    padding: 0px 10px; /* Add padding inside the status bar */
+    text-align: center; /* Center text horizontally within the status bar */
 }
 
-
+/* Styling for text inside the status bar */
 .statusbar > p {
-    color: rgb(255, 255, 255);
-    display: flex;
-    align-items: center;
-    text-align: center;
+    color: rgb(255, 255, 255); /* Set text color to white */
+    display: flex; /* Use flexbox layout for text */
+    align-items: center; /* Align text vertically within the status bar */
+    text-align: center; /* Center text horizontally within the status bar */
 }
 
+/* Styling for the navigation bar */
 .navbar {
-    background-color: #333; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
+    background-color: #333; /* Set the background color of the navbar */
+    display: flex; /* Use flexbox layout for the navbar */
+    justify-content: space-between; /* Space items evenly along the main axis */
+    align-items: center; /* Align items vertically within the navbar */
+    padding: 10px 20px; /* Add padding inside the navbar */
 }
 
+/* Styling for the left side of the navbar */
 .nav-left {
-    flex: 1; 
+    flex: 1; /* Allow flexible sizing for the left side of the navbar */
 }
 
+/* Styling for the right side of the navbar */
 .nav-right {
-    /* Right side of the navbar */
+    /* This section is intentionally left blank to be filled with specific styles */
 }
 
+/* Styling for navigation header list */
 .nav-header {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    list-style-type: none; /* Remove default list styles */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
 }
 
+/* Styling for navigation header list items */
 .nav-header li {
-    display: inline;
-    margin-right: 20px;
+    display: inline; /* Display list items inline */
+    margin-right: 20px; /* Add right margin between list items */
 }
 
+/* Styling for navigation links */
 .nav-header li a {
-    text-decoration: none;
-    color: #ccc; /* Light grey for nav links */
-    font-size: 16px;
+    text-decoration: none; /* Remove underline from links */
+    color: #ccc; /* Set text color to light grey for nav links */
+    font-size: 16px; /* Set font size for nav links */
 }
 
+/* Styling for navigation links on hover */
 .nav-header li a:hover {
-    color: white; /* Change color on hover */
+    color: white; /* Change text color to white on hover */
 }
 
+/* Styling for navigation buttons on the right side */
 .nav-right .nav-button {
-    text-decoration: none;
-    padding: 10px 20px;
-    background-color: #333; /* Same as navbar background */
-    color: #ccc; /* Light grey for button text */
-    border-radius: 5px;
+    text-decoration: none; /* Remove underline from button */
+    padding: 10px 20px; /* Add padding inside the button */
+    background-color: #333; /* Set background color of the button */
+    color: #ccc; /* Set text color to light grey for button text */
+    border-radius: 5px; /* Add border radius for rounded corners */
 }
 
+/* Styling for navigation buttons on hover */
 .nav-right .nav-button:hover {
-    color: white; /* Darken button on hover */
-}
-.login-option,a {
-    flex: 1;
-    font-weight: bold;
-    cursor: pointer;
-}
-.nav-Button.active a {
-    background-color: #666; 
-    color: white; 
-}
-.logo-container2 {
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    padding: 10px;
+    color: white; /* Change text color to white on hover */
 }
 
+/* Styling for login options and links */
+.login-option,
+a {
+    flex: 1; /* Allow flexible sizing for login options and links */
+    font-weight: bold; /* Set font weight for login options and links */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Styling for active navigation button */
+.nav-Button.active a {
+    background-color: #666; /* Set background color for active navigation button */
+    color: white; /* Set text color to white for active navigation button */
+}
+
+/* Styling for logo container */
+.logo-container2 {
+    display: flex; /* Use flexbox layout for the logo container */
+    justify-content: left; /* Align content to the left within the logo container */
+    align-items: left; /* Align content to the left vertically within the logo container */
+    padding: 10px; /* Add padding inside the logo container */
+}
+
+/* Styling for logo image within logo container */
 .logo-img2 {
-    width: 500px; /* Set a specific width for the image */
-    height: auto; /* Maintain aspect ratio */
+    width: 500px; /* Set a specific width for the logo image */
+    height: auto; /* Maintain aspect ratio of the logo image */
 }

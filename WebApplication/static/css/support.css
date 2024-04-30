@@ -1,170 +1,144 @@
-/* General styling */
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    padding: 20px;
+    font-family: Arial, sans-serif; /* Set default font family for the body */
+    background-color: #ffffff; /* Set background color for the body */
+    padding: 20px; /* Add padding to the body */
 }
 
+/* Container styling */
 .container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: flex; /* Use flexbox layout for container */
+    justify-content: space-between; /* Space items evenly between container */
+    max-width: 1200px; /* Set maximum width for the container */
+    margin: 0 auto; /* Center the container horizontally */
     align-items: flex-start; /* Align items at the start of the cross axis */
 }
 
+/* Styling for left and right sections */
 .left-section,
 .right-section {
     width: 48%; /* Adjust width as needed */
-    background-color: #eeeeee;
-    border: 1px solid #eeeeee;
-    border-radius: 4px;
-    padding: 20px;
-    box-sizing: border-box;
+    background-color: #eeeeee; /* Set background color for sections */
+    border: 1px solid #eeeeee; /* Add border around sections */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    padding: 20px; /* Add padding inside sections */
+    box-sizing: border-box; /* Include padding and border in width calculation */
 }
 
 /* Scrollable table container */
 .scrollable-table-container {
-    max-height: 400px;
-    overflow-y: auto;
-    border: 1px solid #ffffff;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    max-height: 400px; /* Set maximum height for scrollable container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ffffff; /* Add border around container */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    margin-bottom: 10px; /* Add margin at the bottom of the container */
 }
 
 /* Table styling */
 .scrollable-table-container table {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100%; /* Set table width to 100% */
+    border-collapse: collapse; /* Collapse table borders */
 }
 
 .scrollable-table-container th,
 .scrollable-table-container td {
-    border: 1px solid #ffffff;
-    padding: 8px;
-    text-align: left;
+    border: 1px solid #ffffff; /* Add border around table cells */
+    padding: 8px; /* Add padding inside table cells */
+    text-align: left; /* Align text to the left within table cells */
 }
 
 .scrollable-table-container th {
-    background-color: #444444;
-    color: #fff;
+    background-color: #444444; /* Set background color for table headers */
+    color: #fff; /* Set text color for table headers */
 }
 
+/* Styling for custom labels */
 .custom-label {
-    background-color: #444444;
-    color: #fff;
-    padding: 8px;
-    border-radius: 4px;
-    display: inline-block;
-    margin-bottom: 10px;
+    background-color: #444444; /* Set background color for custom labels */
+    color: #fff; /* Set text color for custom labels */
+    padding: 8px; /* Add padding inside custom labels */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    display: inline-block; /* Ensure inline display for custom labels */
+    margin-bottom: 10px; /* Add margin at the bottom of custom labels */
 }
 
-/* Form inputs and labels */
+/* Styling for form inputs and labels */
 .form-group input[type="date"],
 .form-group input[type="text"],
 .form-group input[type="submit"],
 .form-group label {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
+    width: 100%; /* Set width to 100% for form inputs and labels */
+    padding: 10px; /* Add padding inside form inputs and labels */
+    margin-bottom: 10px; /* Add margin at the bottom of form inputs and labels */
+    border: 1px solid #ddd; /* Add border around form inputs and labels */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    box-sizing: border-box; /* Include padding and border in width calculation */
 }
 
 .form-group label {
-    font-weight: bold;
-    display: block;
+    font-weight: bold; /* Set font weight for form labels */
+    display: block; /* Display form labels as block elements */
 }
 
-/* Submit button */
+/* Styling for submit button */
 .submit {
-    background-color: #383838;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: #383838; /* Set background color for submit button */
+    color: #fff; /* Set text color for submit button */
+    border: none; /* Remove border from submit button */
+    padding: 12px 20px; /* Add padding inside submit button */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
 }
 
 .submit:hover {
-    background-color: #3f3f3f;
+    background-color: #3f3f3f; /* Change background color on hover */
 }
 
 /* Styling for h1 */
 h1 {
     display: inline-block; /* Ensure inline-block to wrap content */
-    background-color: #444444;
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 4px;
-    font-size: 36px;
-    margin-bottom: 20px;
+    background-color: #444444; /* Set background color for heading */
+    color: #fff; /* Set text color for heading */
+    padding: 12px 20px; /* Add padding inside heading */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    font-size: 36px; /* Set font size for heading */
+    margin-bottom: 20px; /* Add margin at the bottom of heading */
 }
 
-/* Header styling */
+/* Styling for header */
 .header {
-    text-align: center;
-    color: #fff;
-    padding: 20px 0;
-}
-/* Scrollable table container */
-.scrollable-table-container {
-    max-height: 400px;
-    overflow-y: auto;
-    border: 1px solid #ffffff;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    text-align: center; /* Center align text within the header */
+    color: #fff; /* Set text color for the header */
+    padding: 20px 0; /* Add padding inside the header */
 }
 
-/* Table styling */
-.scrollable-table-container table {
-    width: 100%;
-    border-collapse: collapse;
-}
+/* Additional styling for specific elements */
 
-.scrollable-table-container th,
-.scrollable-table-container td {
-    border: 1px solid #ffffff;
-    padding: 8px;
-    text-align: left;
-}
-
-.scrollable-table-container th {
-    background-color: #444444;
-    color: #fff;
-}
-.left-section,
-.right-section {
-    width: 48%; /* Adjust width as needed */
-    background-color: #eeeeee;
-    border: 1px solid #eeeeee;
-    border-radius: 4px;
-    padding: 20px;
-    box-sizing: border-box;
-}
-.box-L{
-    width: 100%;
-    height: 200px; /* Adjust height as needed */
-    padding: 10px;
-    border: 1px solid #ddd; /* Border style */
-    border-radius: 4px; /* Rounded corners */
-    box-sizing: border-box; /* Include padding and border in width */
-    resize: vertical; /* Allow vertical resizing */
-    font-family: Arial, sans-serif; /* Specify font */
-    font-size: 14px; /* Specify font size */
-    line-height: 1.5; /* Line height for text */
-    vertical-align: top; /* Align text to the top within the textarea */
+/* Styling for textarea (.box-L) */
+.box-L {
+    width: 100%; /* Set width to 100% for textarea */
+    height: 200px; /* Set height for textarea */
+    padding: 10px; /* Add padding inside textarea */
+    border: 1px solid #ddd; /* Add border around textarea */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+    resize: vertical; /* Allow vertical resizing of textarea */
+    font-family: Arial, sans-serif; /* Set font family for textarea */
+    font-size: 14px; /* Set font size for textarea */
+    line-height: 1.5; /* Set line height for textarea */
+    vertical-align: top; /* Align text to the top within textarea */
     overflow: auto; /* Add scrollbar when content overflows */
 }
-.desc{
-    font-size: 17px;
-    font-weight: bold;
-    color: #ffffff;
-    padding: 10px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    border: 1px solid #444; /* Add a grey border */
+
+/* Styling for description label (.desc) */
+.desc {
+    font-size: 17px; /* Set font size for description label */
+    font-weight: bold; /* Set font weight for description label */
+    color: #ffffff; /* Set text color for description label */
+    padding: 10px; /* Add padding inside description label */
+    margin-top: 20px; /* Add margin at the top of description label */
+    margin-bottom: 10px; /* Add margin at the bottom of description label */
+    border: 1px solid #444; /* Add border around description label */
     border-radius: 4px; /* Add border radius for rounded corners */
-    background-color: #444; /* Add a light grey background color */
+    background-color: #444; /* Set background color for description label */
 }
