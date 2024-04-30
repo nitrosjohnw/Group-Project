@@ -207,7 +207,7 @@ def userLogout(request):
         logout(request)
         
         request.user = None
-        return render(request,"home.html")
+        return loginPage(request)
 
 def account(request):
     if UserLoggedIn(request):
