@@ -105,6 +105,8 @@ a {
 
 /* Styling for logo image within logo container */
 .logo-img2 {
-    width: 500px; /* Set a specific width for the logo image */
+    width: 80%; /* Set width to 80% of the parent container */
+    max-width: 500px; /* Set a maximum width for the logo image */
     height: auto; /* Maintain aspect ratio of the logo image */
 }
+
