@@ -29,8 +29,6 @@ def doDatesOverlap(start_date_a, end_date_a, start_date_b, end_date_b):
     
 
 def getEquipmentBetweenDate(startDate, endDate):
-    startDate = datetime.datetime.strptime(startDate, '%Y-%m-%d').date()
-    endDate = datetime.datetime.strptime(endDate, '%Y-%m-%d').date()
     #look at length of booing table that is returned when filtered then take that away from equipment available
     bookings = Booking.objects.all()
     equipment = Equipment.objects.all()
@@ -275,8 +273,25 @@ def bookingPage(request):
     if request.method == "POST":
         #if the user wants to sort the equipment
         if request.POST["Sort"] == "Sort":
-            startDate = request.POST["startDate"]
-            endDate = request.POST["endDate"]
+            try:
+                startDate = request.POST["startDate"]
+                endDate = request.POST["endDate"]
+                startDate = datetime.datetime.strptime(startDate, '%Y-%m-%d').date()
+                endDate = datetime.datetime.strptime(endDate, '%Y-%m-%d').date()
+            except:
+                user = request.user
+                accountID = user.id
+                context = {
+                'bookings':usersBookings,
+                'equipment':equipment,
+                'accountID':accountID,
+                'itemID':1,
+                'startDate':1,
+                'endDate':1,
+                'bookingStatus':False
+                }
+                return render(request,"booking.html",context)
+
             equipment = getEquipmentBetweenDate(startDate, endDate)
             context = {
                 'bookings':usersBookings,
