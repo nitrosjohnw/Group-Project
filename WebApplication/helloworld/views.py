@@ -85,7 +85,15 @@ def signUp(request):
         password2 = request.POST["password2"]
         fname = request.POST["fname"]
         lname = request.POST["lname"]
+        
+        if (not(request.POST.get("TCA"))):
+            context = {
+            'form':signUpForm(),
+            'status':'Please accept T&C'
+            }
+            return render(request,"signup.html",context)
 
+        
         if User.objects.filter(email=email).exists():
             context = {
                 'form': signUpForm(),
