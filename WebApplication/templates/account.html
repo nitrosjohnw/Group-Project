@@ -23,18 +23,19 @@
         <div class="grey-container"><!--anothr grey container that is styled in the css-->
             <div class="change-password-section">
                 <h2>Change Password</h2>
-                <form>
+                <form method="post" action="{% url 'changepassword' %}"> <!-- Form for changing the password -->
+                    {% csrf_token %}<!-- Cross Site Request Forgery token -->
                     <div class="form-group">
                         <label for="currentPassword">Current Password:</label>
-                        <input id="currentPassword" name="current_password" type="password" required><!-- Input field for entering the current password -->
+                        <input id="currentPassword" name="currentPassword" type="password" required><!-- Input field for entering the current password -->
                     </div>
                     <div class="form-group">
                         <label for="newPassword">New Password:</label>
-                        <input id="newPassword" name="new_password1" type="password" required><!-- Input field for entering the New password -->
+                        <input id="newPassword" name="password" type="password" required><!-- Input field for entering the New password -->
                     </div>
                     <div class="form-group">
                         <label for="confirmNewPassword">Confirm New Password:</label>
-                        <input id="confirmNewPassword" name="new_password2" type="password" required><!-- Input field for entering the new password again-->
+                        <input id="confirmNewPassword" name="password2" type="password" required><!-- Input field for entering the new password again-->
                     </div>
                     <input class="submit" type="submit" value="Change Password">
                 </form>

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
-from helloworld.forms import loginForm, bookingForm ,signUpForm
+from helloworld.forms import loginForm, bookingForm ,signUpForm, changePasswordForm
 from django.contrib.auth.models import User
 from helloworld.models import Equipment, Booking
 import datetime
@@ -67,16 +67,13 @@ def authBooking(bookingDetails):
     else:
         return False
 
+def TC(request):
+    return render(request,"Terms&Conditions.html")
 
 def home(request):
 
     return render(request,"home.html")
 
-
-
-def bookingPage(request):
-
-    return render(request,"booking.html")
 
 def signUp(request):
 
@@ -88,7 +85,15 @@ def signUp(request):
         password2 = request.POST["password2"]
         fname = request.POST["fname"]
         lname = request.POST["lname"]
+        
+        if (not(request.POST.get("TCA"))):
+            context = {
+            'form':signUpForm(),
+            'status':'Please accept T&C'
+            }
+            return render(request,"signup.html",context)
 
+        
         if User.objects.filter(email=email).exists():
             context = {
                 'form': signUpForm(),
@@ -205,6 +210,48 @@ def userLogout(request):
         logout(request)
         
         request.user = None
+        return loginPage(request)
+
+def changePassword(request):
+    if UserLoggedIn:
+        if request.method == "POST":
+            user = request.user
+            oldPassword = request.POST["currentPassword"]
+            password = request.POST["password"]
+            password2 = request.POST["password2"]
+            form = changePasswordForm(request.POST)
+            print(form)
+            if form.is_valid():
+                
+                if not(user.check_password(oldPassword)):
+                    context = {
+                    'username':GetUserName(request),
+                    'status':'Incorrect Password'
+                    }
+                    return render(request,"account.html",context)
+                
+                if (not(password == password2)):
+                    context = {
+                    'username':GetUserName(request),
+                    'status':'Passwords do not match'
+                    }
+                    return render(request,"account.html",context)
+                
+                user.set_password(password)
+                user.save()
+                context = {
+                    'username':GetUserName(request),
+                    'status':'Password Changed'
+                }
+                return render(request,"account.html",context)
+            else:
+                context = {
+                    'username':GetUserName(request),
+                    'status':'Invalid Password'
+                }
+                return render(request,"account.html",context)
+            
+    else:
         return loginPage(request)
 
 def account(request):
