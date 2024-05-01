@@ -1,28 +1,29 @@
+<!-- Contributors: John,Toby,Matthew -->
 {% load static %}
 <html>
 <head>
     <title>Account</title> <!-- setting tab title to account -->
-    <link rel="stylesheet" href="{% static 'css/account.css' %}"> <!--linking the external styling sheet -->
+    <link rel="stylesheet" href="{% static 'css/account.css' %}"> <!--linking the external styling sheet --><!-- Toby,John -->
 </head>
 <body>
-    {% include 'navbar.html' %}    <!--including the navbar.html -->
+    {% include 'navbar.html' %}    <!--including the navbar.html --> <!-- Toby,John -->
     <div class="header"> <!-- given class names to style in the css -->
         <h1>Account</h1><!-- displaying title accounts  -->
     </div>
 
     <div class="container">
-        <div class="grey-container"> <!--styling container for section with grey background-->
+        <div class="grey-container"> <!--styling container for section with grey background--><!-- John -->
             <div class="profile-section">
-                <h2>Profile</h2>
+                <h2>Profile</h2><!-- John -->
                 <p>Username: {{ user.username }}</p><!-- Displaying the username of the logged-in user -->
                 <p>First Name: {{ user.first_name }}</p><!-- Displaying the first name of the logged-in user -->
                 <p>Last Name: {{ user.last_name}}</p><!-- Displaying the last name of the logged-in user -->
             </div>
         </div>
         
-        <div class="grey-container"><!--anothr grey container that is styled in the css-->
+        <div class="grey-container"><!--anothr grey container that is styled in the css--><!-- John -->
             <div class="change-password-section">
-                <h2>Change Password</h2>
+                <h2>Change Password</h2><!-- Matthew -->
                 <form method="post" action="{% url 'changepassword' %}"> <!-- Form for changing the password -->
                     {% csrf_token %}<!-- Cross Site Request Forgery token -->
                     <div class="form-group">
@@ -44,7 +45,7 @@
         
         <div class="grey-container">
             <div class="booking-history-section">
-                <h2>Booking History</h2>
+                <h2>Booking History</h2><!-- Toby,John -->
                 <div class="scrollable-table-container">
                     {% include 'userbookingtableaccount.html' %}<!-- Including a booking table (from 'userbookingtable.html') within a scrollable container -->
                 </div>

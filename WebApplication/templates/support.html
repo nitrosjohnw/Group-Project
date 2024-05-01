@@ -1,23 +1,22 @@
+<!-- Contributors: John,Toby-->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/support.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/support.css' %}"><!--John-->
     <!-- Include the CSS file for styling the support page -->
 </head>
 <body>
-    {% include 'navbar.html' %}
+    {% include 'navbar.html' %}<!--John,Toby-->
     <!-- Include the navbar.html file for navigation bar -->
 
     <div class="header">
-        <h1>Support</h1>
+        <h1>Support</h1><!--John-->
         <!-- Display the heading "Support" -->
     </div>
 
-    <div class="container">
+    <div class="container"><!--John-->
         <div class="left-section">
             <div class="booking-form">
                 <!-- Left section with a booking form -->
@@ -26,36 +25,36 @@
                     <input type="text">
                     <!-- Input field for entering the title of the support request -->
                 </div>
-                <div class="form-group">
+                <div class="form-group"><!--John-->
                     <label class="desc">Description of Problem:</label>
                     <input class="box-L" type="text">
                     <!-- Input field for entering the description of the problem -->
                 </div>
-                <input class="submit" type="submit" name="Sort" value="Submit">
+                <input class="submit" type="submit" name="Sort" value="Submit"><!--John-->
                 <!-- Submit button to submit the support request -->
             </div>
         </div>
-        <div class="right-section">
+        <div class="right-section"><!--John,Toby-->
             <!-- Right section for booking history and issue type -->
             <div class="booking-history">
                 <div class="scrollable-table-container">
                     {% include 'userbookingtable.html' %}
                     <!-- Include a scrollable table for user booking history -->
                 </div>
-                <div class="radio-group">
+                <div class="radio-group"><!--Toby-->
                     <!-- Radio group for selecting the type of issue -->
                     <label>
                         <input type="radio" name="issue_type" value="broken">
                         Broken
                         <!-- Radio button for reporting a broken item -->
                     </label>
-                    <label>
+                    <label><!--Toby-->
                         <input type="radio" name="issue_type" value="lost">
                         Lost
                         <!-- Radio button for reporting a lost item -->
                     </label>
                 </div>
-                <input class="submit" type="submit" name="Sort" value="Submit">
+                <input class="submit" type="submit" name="Sort" value="Submit"><!--John-->
                 <!-- Submit button to submit the selected issue type -->
             </div>
         </div>

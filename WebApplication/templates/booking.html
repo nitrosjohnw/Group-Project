@@ -1,7 +1,7 @@
 {% load static %} <!-- Loading static files to use within the template -->
-
+<!-- Contributors: John,Toby,Lucian,Matthew -->
 <html>
-<head>
+<head><!-- John -->
     <title>Item Booking System</title> <!-- Setting the tab title -->
     <link rel="stylesheet" href="{% static 'css/booking.css' %}"> <!-- Linking to the external CSS file --> 
     <script>
@@ -29,7 +29,7 @@
         }
     </script>
 </head>
-<body>
+<body><!-- John,Toby -->
     {% include 'navbar.html' %} <!-- Including the 'navbar.html' file to display the navigation bar -->
 
     <div class="header">
@@ -40,10 +40,10 @@
         <div class="left-section">
             <div class="booking-form">
                 <form method="post" action="{% url 'booking' %}"> <!-- Creating a form with a POST method that submits to the 'booking' URL -->
-                    {% csrf_token %} <!-- CSRF token to protect against Cross-Site Request Forgery -->
+                    {% csrf_token %} <!-- CSRF token to protect against Cross-Site Request Forgery --><!-- Toby -->
 
                     <!-- Input fields for booking start and end dates -->
-                    <label for="bookingStartDate" class="custom-label">Booking start date</label>
+                    <label for="bookingStartDate" class="custom-label">Booking start date</label><!-- Toby -->
                     <input id="bookingStartDate" name="startDate" type="date" value="{{ startDate }}"> <!-- Displaying or initializing the start date -->
                     <label for="bookingEndDate" class="custom-label">Booking end date</label>
                     <input id="bookingEndDate" name="endDate" type="date" value="{{ endDate }}"> <!-- Displaying or initializing the end date -->
@@ -56,9 +56,9 @@
                         </div>
                     </div>
                     <div>
-                        <input type="text" id="myInput" onkeyup="searchTable()" placeholder="Search Equipment">  <!-- Input field for searching equipment -->
+                        <input type="text" id="myInput" onkeyup="searchTable()" placeholder="Search Equipment">  <!-- Input field for searching equipment --><!-- Lucian -->
                     </div>
-                    <input class="submit" type="submit" name="Sort" value="Submit"> <!-- Submit button within the form -->
+                    <input class="submit" type="submit" name="Sort" value="Submit"> <!-- Submit button within the form --><!-- Toby -->
                 </form>
             </div>
         </div>
@@ -66,7 +66,7 @@
         <div class="right-section">
             <div class="booking-history">
                 <div class="scrollable-table-container">
-                    {% include 'userbookingtable.html' %} <!-- Including a user booking table from 'userbookingtable.html' within a scrollable container -->
+                    {% include 'userbookingtable.html' %} <!-- Including a user booking table from 'userbookingtable.html' within a scrollable container --><!-- Toby,John -->
                 </div>
             </div>
         </div>

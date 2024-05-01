@@ -1,38 +1,38 @@
-
+<!-- Contributors: John,Toby,Matthew -->
 
 {% load static %} <!-- Loading static files to use within the template -->
 
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/login-out.css' %}"> <!-- Linking to an external CSS file 'login-out.css' located in the 'static' directory -->
-    <title>Item Booking System</title> <!-- Setting the tab title -->
+    <title>Item Booking System</title> <!-- Setting the tab title --><!-- John -->
 </head>
 <body>
-    {% block content %} <!-- Defines a block named 'content' that can be overridden by child templates -->
-    <div class="logo-container">
+    {% block content %} <!-- Defines a block named 'content' that can be overridden by child templates --><!-- Toby -->
+    <div class="logo-container"><!-- John -->
         <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/University_of_Westminster_Logo.jpg" alt="University of Westminster Logo" class="logo-img"> <!-- University of Westminster Logo displayed within a container -->
     </div>
-    <div class="login-container">
+    <div class="login-container"><!-- Matthew -->
         <div class="login-header">
             <div class="login-option1"><a href="{% url 'login' %}" class="nav-button">Log In</a></div> <!-- Link to the login page using URL named 'login' -->
             <div class="login-option"><a href="{% url 'signup' %}" class="nav-button">Sign Up</a></div> <!-- Link to the signup page using URL named 'signup' -->
         </div>
-        <div class="login-form">
+        <div class="login-form"><!-- Matthew -->
             <form method="post" action="{% url 'login' %}"> <!-- Form for user login with POST method submitting to the 'login' URL -->
                 {% csrf_token %} <!-- CSRF token to protect against Cross-Site Request Forgery -->
                 <div class="form-group">
                     <label for="id_username">Username:</label>
                     {{ form.username }} <!-- Displaying the username input field from the login form -->
                 </div>
-                <div class="form-group">
+                <div class="form-group"><!-- Matthew -->
                     <label for="id_password">Password:</label>
                     <input type="password" id="id_password" name="password"> <!-- Password input field -->
                 </div>
-                <input class="submit" type="submit" value="Login"> <!-- Submit button for login form -->
+                <input class="submit" type="submit" value="Login"> <!-- Submit button for login form --><!-- Matthew -->
             </form>
-            <div class="login-status">{{ status }}</div> <!-- Displaying login status message (if any) -->
+            <div class="login-status">{{ status }}</div> <!-- Displaying login status message (if any) --><!-- Matthew -->
         </div>
     </div>
-    {% endblock %} <!-- Closing the 'content' block -->
+    {% endblock %} <!-- Closing the 'content' block --><!-- Matthew -->
 </body>
 </html>
