@@ -220,7 +220,7 @@ def changePassword(request):
             password = request.POST["password"]
             password2 = request.POST["password2"]
             form = changePasswordForm(request.POST)
-            print(form)
+            
             if form.is_valid():
                 
                 if not(user.check_password(oldPassword)):
@@ -275,7 +275,7 @@ def cancelBooking(request):
     if UserLoggedIn(request):
         if request.method == "POST":
             bookingID = request.POST["bookingID"]
-            print(bookingID)
+            
             booking = Booking.objects.filter(bookingID = bookingID).first()
             
             if booking.account != request.user:
