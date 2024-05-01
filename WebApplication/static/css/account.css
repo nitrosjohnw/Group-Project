@@ -124,3 +124,14 @@ body {
     color: #fff; /* Set text color of header */
     padding: 20px 0; /* Add padding above and below header text */
 }
+.profile-section p {
+    color: #fff; /* Set text color to white */
+    font-weight: bold; /* Set font weight to bold */
+    font-size: 20px; /* Set font size to 20px */
+    padding: 10px; /* Add padding */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    background-color: #424242; /* Set background color to dark grey */
+    display: block; /* Display as block element (stack elements vertically) */
+    margin-bottom: 10px; /* Add margin at the bottom */
+    border-radius: 4px;
+}
