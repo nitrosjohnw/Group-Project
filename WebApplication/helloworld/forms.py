@@ -34,3 +34,11 @@ class bookingForm(forms.Form):
     class Meta:
         model = Booking
         fields = ['itemID','startDate','endDate']
+
+
+class changePasswordForm(forms.Form):
+    currentPassword = forms.CharField(label="Current Password", max_length=50)
+    password = forms.CharField(label="New Password", max_length=50)
+    password2 = forms.CharField(label="New Password2", max_length=50)
+    class Meta:
+        model = User
