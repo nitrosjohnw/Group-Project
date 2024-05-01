@@ -2,7 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 
+# Toby, Ioan Grigoras
 
+# Toby, Ioan Grigoras
 class Equipment(models.Model):
     # Choices for equipment locations
     LOCATIONS = [
@@ -39,7 +41,7 @@ class Equipment(models.Model):
         equipment = cls(equipmentName=equipmentName, equipmentType=equipmentType, equipmentQuantity=equipmentQuantity, equipmentLocation=equipmentLocation, equipmentAudit=equipmentAudit, equipmentStatus=equipmentStatus, equipmentID=equipmentID)
         return equipment
 
-
+#Toby, Ioan Grigoras
 class Booking(models.Model):
     # Choices for booking status
     STATUS = [

@@ -1,6 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import Booking
+#Toby, Mathew
+
+#Mathew
 class loginForm(forms.Form):
     # Form fields for logging in
     username = forms.CharField(label="Username", max_length=50)
@@ -9,6 +12,7 @@ class loginForm(forms.Form):
     class Meta:
         model = User
 
+#Mathew
 class signUpForm(forms.Form):
     # Form fields for signing up
     username = forms.CharField(label="Username", max_length=50)
@@ -21,6 +25,7 @@ class signUpForm(forms.Form):
     class Meta:
         model = User
 
+#Toby
 class bookingSort(forms.Form):
     # Form fields for sorting bookings
     startDate = forms.DateField(label="Start Date")
@@ -29,6 +34,7 @@ class bookingSort(forms.Form):
     class Meta:
         fields = ['startDate', 'endDate']
 
+#Toby
 class bookingForm(forms.Form):
     # Form fields for booking equipment
     itemID = forms.IntegerField(label="ID")
@@ -39,6 +45,7 @@ class bookingForm(forms.Form):
         model = Booking
         fields = ['itemID', 'startDate', 'endDate']
 
+#Mathew
 class changePasswordForm(forms.Form):
     # Form fields for changing password
     currentPassword = forms.CharField(label="Current Password", max_length=50)

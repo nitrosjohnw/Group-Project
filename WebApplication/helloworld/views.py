@@ -7,7 +7,7 @@ from helloworld.models import Equipment, Booking
 import datetime
 # Create your views here.
 
-#Edited by Toby, Mathew, Lucian, David and John
+#Edited by Toby, Mathew, Ioan Grigoras, David and John
 
 
 #Toby
