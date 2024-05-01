@@ -51,6 +51,8 @@ download_pdf.short_description = "Download selected items as PDF"
 # Register your models here.
 # Path: WebApplication/helloworld/admin.py
 
+# Booking.objects.filter(ITEM HERE)
+
 from .models import  Booking, Equipment
 
 admin.site.register(Booking)
