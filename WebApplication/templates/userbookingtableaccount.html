@@ -13,7 +13,13 @@
             <td>{{ booking.equipment.equipmentName }}</td>
             <td>{{ booking.startDate }}</td>
             <td>{{ booking.endDate }}</td>
-            <td>{{ booking.bookingStatus }}</td>
+            {% if booking.bookingStatus == "O" %}
+            <td>Open</td>
+            {% elif booking.bookingStatus == "C" %}
+            <td>Close</td>
+            {% elif booking.bookingStatus == "L" %}
+            <td>Late</td>
+            {% endif %}
             <td><button class="submit" type="submit" name="bookingID" value={{booking.bookingID}}>Cancel</button></td>
         </tr>
         {% endfor %}

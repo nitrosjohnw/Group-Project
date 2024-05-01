@@ -20,7 +20,13 @@
         <td>{{ booking.endDate }}</td>
 
         <!-- Display booking status -->
-        <td>{{ booking.bookingStatus }}</td>
+        {% if booking.bookingStatus == "O" %}
+        <td>Open</td>
+        {% elif booking.bookingStatus == "C" %}
+        <td>Close</td>
+        {% elif booking.bookingStatus == "L" %}
+        <td>Late</td>
+        {% endif %}
     </tr>
     {% endfor %}
 </table>
