@@ -1,4 +1,6 @@
+<!-- Table structure for displaying equipment booking options -->
 <table id="bookingtable">
+    <!-- Table header row -->
     <tr>
         <th></th> <!-- Header column for radio button selection (empty for spacing) -->
         <th>Equipment Name</th> <!-- Header column for Equipment Name -->
@@ -6,15 +8,21 @@
         <th>Equipment Quantity</th> <!-- Header column for Equipment Quantity -->
         <th>Equipment Location</th> <!-- Header column for Equipment Location -->
     </tr>
+    <!-- Loop through each item in the equipment list -->
     {% for item in equipment %}
     <tr>
-        <td><input type="radio" name="itemID" id="item{{ item.equipmentID }}" value="{{ item.equipmentID }}"></td>
         <!-- Radio button for item selection, with unique ID and value assigned -->
-        <td>{{ item.equipmentName }}</td> <!-- Displaying Equipment Name -->
-        <td>{{ item.equipmentType }}</td> <!-- Displaying Equipment Type -->
-        <td>{{ item.equipmentQuantity }}</td> <!-- Displaying Equipment Quantity -->
-        <td>{{ item.equipmentLocation }}</td> <!-- Displaying Equipment Location -->
+        <td><input type="radio" name="itemID" id="item{{ item.equipmentID }}" value="{{ item.equipmentID }}"></td>
+        <!-- Displaying Equipment Name -->
+        <td>{{ item.equipmentName }}</td>
+        <!-- Displaying Equipment Type -->
+        <td>{{ item.equipmentType }}</td>
+        <!-- Displaying Equipment Quantity -->
+        <td>{{ item.equipmentQuantity }}</td>
+        <!-- Displaying Equipment Location -->
+        <td>{{ item.equipmentLocation }}</td>
     </tr>
+    <!-- End of item loop -->
     {% endfor %}
 </table>
-
+<!-- End of table -->

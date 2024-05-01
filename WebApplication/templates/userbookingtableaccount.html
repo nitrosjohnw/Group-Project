@@ -1,28 +1,27 @@
 <form method="post" action="{% url 'cancelbooking' %}">
-    {% csrf_token %}
+    {% csrf_token %} <!-- CSRF token to protect against Cross-Site Request Forgery -->
     <table>
         <tr>
-            <th>Equipment</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Booking Status</th>
-            <th></th>
+            <th>Equipment</th> <!-- Header column for Equipment -->
+            <th>Start Date</th> <!-- Header column for Start Date -->
+            <th>End Date</th> <!-- Header column for End Date -->
+            <th>Booking Status</th> <!-- Header column for Booking Status -->
+            <th></th> <!-- Header column for Cancel button -->
         </tr>
         {% for booking in bookings %}
         <tr>
-            <td>{{ booking.equipment.equipmentName }}</td>
-            <td>{{ booking.startDate }}</td>
-            <td>{{ booking.endDate }}</td>
+            <td>{{ booking.equipment.equipmentName }}</td> <!-- Displaying Equipment Name -->
+            <td>{{ booking.startDate }}</td> <!-- Displaying Start Date -->
+            <td>{{ booking.endDate }}</td> <!-- Displaying End Date -->
             {% if booking.bookingStatus == "O" %}
-            <td>Open</td>
+            <td>Open</td> <!-- Displaying Booking Status as "Open" -->
             {% elif booking.bookingStatus == "C" %}
-            <td>Close</td>
+            <td>Close</td> <!-- Displaying Booking Status as "Close" -->
             {% elif booking.bookingStatus == "L" %}
-            <td>Late</td>
+            <td>Late</td> <!-- Displaying Booking Status as "Late" -->
             {% endif %}
-            <td><button class="submit" type="submit" name="bookingID" value={{booking.bookingID}}>Cancel</button></td>
+            <td><button class="submit" type="submit" name="bookingID" value={{booking.bookingID}}>Cancel</button></td> <!-- Cancel button to cancel booking -->
         </tr>
         {% endfor %}
     </table>
-
 </form>
