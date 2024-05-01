@@ -75,6 +75,7 @@ def home(request):
     return render(request,"home.html")
 
 
+ #Matthew
 def signUp(request):
 
     # if this is a POST request we need to process the form data
@@ -97,93 +98,94 @@ def signUp(request):
         if User.objects.filter(email=email).exists():
             context = {
                 'form': signUpForm(),
-                'status': 'Email already in use'
+                'status': 'Email already in use'  # Displays message  
             }
-            return render(request, "signup.html", context)
+            return render(request, "signup.html", context)  #Redirects   
         # create a form instance and populate it with data from the request:
         form = signUpForm(request.POST)
         # check whether it's valid:
-        if (not(password == password2)):
+        if (not(password == password2)): #password checker (to make sure they match.)
             context = {
             'form':form,
-            'status':'Passwords do not match'
+            'status':'Passwords do not match'  # Displays message  
             }
             return render(request,"signup.html",context)
 
         if form.is_valid():
             try: 
-                user = User.objects.create(username = username, email = email, first_name = fname, last_name = lname) 
-                user.set_password(password)
-                user.save()
+                user = User.objects.create(username = username, email = email, first_name = fname, last_name = lname) # creates account with datails inputed
+                user.set_password(password) # Saves password
+                user.save() # Saves account details
             except:
-                context = {
+                context = {     #Unsuccessful singup (username is already taken)   
                 'form':form,
-                'status':'Username already exists'
+                'status':'Username already exists'  # Displays message  
                 }
                 return render(request,"signup.html", context)
             
-            if user is not None:
+            if user is not None:  #Successful singup 
                 login(request,user)
                 context = {
                 'form':form,
                 'user':user,
-                'status':'Sign Up Successful'
+                'status':'Sign Up Successful'   # Displays message  
                 }
                 # Redirect to a success page.
                 return render(request,"home.html",context)
             else:
-                context = {
+                context = {            #successful singup (for other reason)
                 'form':form,
-                'status':'Signup Failed'
+                'status':'Signup Failed'   # Displays message  
                 }
                 return render(request,"signup.html", context)
         else:
-            form = signUpForm()
+            form = signUpForm()        #UnSuccessful singup (inormation for signup is invalied)
             context = {
             'form':form,
-            'status':'Invalid Username or Details',
+            'status':'Invalid Username or Details',  # displays message  
             } 
-            return render(request,"signup.html",context)
+            return render(request,"signup.html",context) 
     # if a GET (or any other method) we'll create a blank form
     return render(request,"signup.html")
 
+        #Matthew/John 
 def loginPage(request):
-    # if this is a POST request we need to process the form data
+    # if this is a POST request we need to process the form data. Matthew 
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
         # create a form instance and populate it with data from the request:
         form = loginForm(request.POST)
         # check whether it's valid:
-        if request.user.is_authenticated:
+        if request.user.is_authenticated: #already login
             context = {
             'form':form,
-            'status':'Already Logged In',
+            'status':'Already Logged In',  # displays message  
             'user': request.user,
             }
             return render(request,"home.html",context)
 
         if form.is_valid():
-            user = authenticate(request, username=username, password=password)
+            user = authenticate(request, username=username, password=password) #login
             if user is not None:
                 login(request,user)
                 context = {
                 'form':form,
                 'user':user,
-                'status':'Login Successful',
+                'status':'Login Successful',  # displays message  
                 }
         # Redirect to a success page.
                 return render(request,"home.html",context)
-            else:
+            else:              #unsuccessful at login
                 context = {
                 'form':form,
-                'status':'Invalid Username or Password'
+                'status':'Invalid Username or Password' # displays message 
                 }
                 return render(request,"login.html", context)
-        else:
-            context = {
+        else:          #unsuccessful at login
+            context = {             
             'form':form,
-            'status':'Invalid Username or Password'
+            'status':'Invalid Username or Password'   # displays message  
             }
             return render(request,"login.html", context)
     # if a GET (or any other method) we'll create a blank form
@@ -212,47 +214,49 @@ def userLogout(request):
         request.user = None
         return loginPage(request)
 
+     #Matthew
 def changePassword(request):
+ # if this is a POST request we need to process the form data   
     if UserLoggedIn:
         if request.method == "POST":
             user = request.user
             oldPassword = request.POST["currentPassword"]
             password = request.POST["password"]
             password2 = request.POST["password2"]
+         # create a form instance and populate it with data from the request:
             form = changePasswordForm(request.POST)
             
             if form.is_valid():
-                
-                if not(user.check_password(oldPassword)):
+                if not(user.check_password(oldPassword)): #checks if password entred is old password
                     context = {
                     'username':GetUserName(request),
-                    'status':'Incorrect Password'
+                    'status':'Incorrect Password'       # displays message 
                     }
                     return render(request,"account.html",context)
                 
-                if (not(password == password2)):
-                    context = {
+                if (not(password == password2)): #password checker (to make sure they match.)
+                    context = {          #UnSuccessful (password dose not match)
                     'username':GetUserName(request),
-                    'status':'Passwords do not match'
+                    'status':'Passwords do not match'          # displays message 
                     }
                     return render(request,"account.html",context)
                 
-                user.set_password(password)
-                user.save()
+                user.set_password(password)#set new password
+                user.save() #saves new password
                 context = {
                     'username':GetUserName(request),
-                    'status':'Password Changed'
+                    'status':'Password Changed'      # displays message 
                 }
-                return render(request,"account.html",context)
-            else:
+                return render(request,"account.html",context) 
+            else:         #UnSuccessful
                 context = {
                     'username':GetUserName(request),
-                    'status':'Invalid Password'
+                    'status':'Invalid Password'             # displays message 
                 }
                 return render(request,"account.html",context)
             
     else:
-        return loginPage(request)
+        return loginPage(request) 
 
 def account(request):
     if UserLoggedIn(request):
