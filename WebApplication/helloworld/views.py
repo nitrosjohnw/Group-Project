@@ -67,6 +67,8 @@ def authBooking(bookingDetails):
     else:
         return False
 
+def TC(request):
+    return render(request,"Terms&Conditions.html")
 
 def home(request):
 

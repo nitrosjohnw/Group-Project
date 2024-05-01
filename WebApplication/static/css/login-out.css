@@ -118,3 +118,6 @@ input[type="password"] {
     left: 30%; /* Position the left of the image at the horizontal center of the container */
     transform: translate(-50%, -50%); /* Center the image perfectly within its container */
 }
+.white-href{
+color:white;
+}
