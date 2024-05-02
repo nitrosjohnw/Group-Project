@@ -136,3 +136,12 @@ body {
     margin-bottom: 10px; /* Add margin at the bottom */
     border-radius: 4px;
 }
+.grey-container {
+        width: 46%; /* Set the width of both sections */
+        margin: 0 2%; /* Add margin to the left and right (2% each side) */
+        background-color: #eeeeee; /* Set the background color of the sections */
+        border: 1px solid #eeeeee; /* Add a border around the sections */
+        border-radius: 4px; /* Add border radius to create rounded corners */
+        padding: 20px; /* Add padding inside the sections */
+        box-sizing: border-box; /* Include padding and border in the total width */
+    }
